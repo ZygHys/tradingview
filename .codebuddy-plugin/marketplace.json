@@ -1,0 +1,17 @@
+{
+  "name": "tradingview",
+  "owner": {
+    "name": "ZygHys"
+  },
+  "description": "Unofficial TradingView AI workflow plugin marketplace.",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "backtest-skill",
+      "source": "./plugins/backtest-skill",
+      "description": "TradingView backtesting workflow skill for Pine, Strategy Tester, browser operation, result audit, and local backtest migration.",
+      "version": "0.1.0"
+    }
+  ]
+}
+

@@ -1,0 +1,40 @@
+{
+  "name": "backtest-skill",
+  "version": "0.1.0",
+  "description": "TradingView backtesting workflow skill for Pine, Strategy Tester, browser operation, result audit, and local backtest migration.",
+  "author": {
+    "name": "ZygHys",
+    "url": "https://github.com/ZygHys"
+  },
+  "homepage": "https://github.com/ZygHys/tradingview",
+  "repository": "https://github.com/ZygHys/tradingview",
+  "license": "MIT",
+  "keywords": [
+    "tradingview",
+    "pine-script",
+    "backtesting",
+    "strategy-tester",
+    "webhook",
+    "quant"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "TradingView Backtest Skill",
+    "shortDescription": "Pine, Strategy Tester, and local backtest workflows.",
+    "longDescription": "Generate and review Pine Script strategies, guide or automate TradingView Strategy Tester runs, audit backtest quality, produce webhook payloads, and plan migration to local Python backtesting frameworks.",
+    "developerName": "ZygHys",
+    "category": "Trading",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use $tradingview-backtest to build and test this strategy idea.",
+      "Use $tradingview-backtest to audit this Pine strategy.",
+      "Use $tradingview-backtest to migrate this backtest to Python."
+    ],
+    "brandColor": "#1E88E5"
+  }
+}
+

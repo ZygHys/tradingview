@@ -1,0 +1,25 @@
+{
+  "name": "backtest-skill",
+  "version": "0.1.0",
+  "description": "TradingView backtesting workflow skill for Pine, Strategy Tester, browser operation, result audit, and local backtest migration.",
+  "author": {
+    "name": "ZygHys"
+  },
+  "license": "MIT",
+  "keywords": [
+    "tradingview",
+    "pine-script",
+    "backtesting",
+    "strategy-tester",
+    "webhook",
+    "quant"
+  ],
+  "category": "Trading",
+  "commands": [
+    "./commands/"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}
+
