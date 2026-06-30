@@ -20,6 +20,7 @@ TradingView login is user-owned.
 - Do not request passwords, 2FA codes, cookies, or session exports.
 - Do not store credentials.
 - Do not automate broker orders from TradingView unless the user has explicitly provided a safe paper-trading or sandbox path.
+- Treat visible prompts such as "Create a free account" or "Join for free" as evidence that the current session may not be able to save, add, or run scripts reliably. Stop and ask the user to sign in manually before continuing if Strategy Tester cannot be reached.
 
 ## Strategy Tester Runbook
 
@@ -27,7 +28,7 @@ TradingView login is user-owned.
 2. Select the symbol and exchange.
 3. Set timeframe and chart type.
 4. Open Pine Editor.
-5. Paste or update the Pine v6 `strategy()` script.
+5. Paste or update the supplied Pine v6 `strategy()` script.
 6. Save the script.
 7. Add it to chart.
 8. Open Strategy Tester.
@@ -43,8 +44,12 @@ When automating:
 - Prefer semantic actions and stable UI text over fragile CSS selectors.
 - Take screenshots after major UI transitions.
 - Verify that the script was added to chart before reading Strategy Tester results.
+- Pine Editor uses a Monaco-style editor. After paste or replace, verify the full editor content does not still contain the default `indicator("My script")` snippet or duplicated code before clicking "Add to chart".
+- If direct `fill`, keyboard replace, or paste appends instead of replacing content, stop and switch to a manual checkpoint: ask the user to paste the supplied script into an empty Pine Editor and tell you when it is ready.
 - If a selector fails, stop and ask for a screenshot or manual checkpoint.
 - Keep a log of observed symbol, timeframe, script title, and visible metrics.
+
+Do not use browser automation to design a new strategy from indicators or public accounts. Browser work in this skill is limited to loading supplied code, operating TradingView, collecting results, and comparing already-defined variants or inputs.
 
 ## Evidence to Capture
 
@@ -56,4 +61,3 @@ Minimum:
 - Net profit, max drawdown, total trades, win rate, profit factor.
 - Date range and data depth.
 - Screenshot or export path when available.
-

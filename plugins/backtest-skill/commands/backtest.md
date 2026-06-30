@@ -1,5 +1,5 @@
 ---
-description: "Use the TradingView backtest skill for Pine, Strategy Tester, browser operation, result audit, and local migration."
+description: "Use the TradingView backtest skill for supplied Pine strategies, Strategy Tester, browser operation, result collection, and review."
 ---
 
 # TradingView Backtest
@@ -12,11 +12,10 @@ Use `tradingview-backtest` for a TradingView strategy research or backtesting ta
 
 Confirm what the user has already provided:
 
-- Strategy idea, Pine code, TradingView screenshot, Strategy Tester export, or local data.
+- Existing Pine strategy code, TradingView saved strategy, screenshot, copied Strategy Tester table, or exported result file.
 - Symbol, timeframe, market, date range, commission, slippage, and position sizing assumptions.
 - Whether browser automation is available and whether the user is already logged into TradingView.
 
 ## Execute
 
-Load and follow the `tradingview-backtest` Skill. Do not duplicate its workflow in this command.
-
+Load and follow the `tradingview-backtest` Skill. Do not duplicate its workflow in this command. If the user asks to invent a strategy from indicators, public accounts, or a vague idea, route that to a future strategy-construction skill instead of this command.

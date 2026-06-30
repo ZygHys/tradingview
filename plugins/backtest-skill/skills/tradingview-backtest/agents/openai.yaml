@@ -1,9 +1,8 @@
 interface:
   display_name: "TradingView Backtest"
-  short_description: "Pine, Strategy Tester, and local backtests"
+  short_description: "Run and review TradingView backtests"
   brand_color: "#1E88E5"
-  default_prompt: "Use $tradingview-backtest to build, run, and audit a TradingView strategy backtest."
+  default_prompt: "Use $tradingview-backtest to run and review this supplied TradingView strategy."
 
 policy:
   allow_implicit_invocation: true
-

@@ -35,6 +35,25 @@ function validateSkill(file) {
   assert(/^description:\s*.+$/m.test(frontmatter), `${file} missing description`);
 }
 
+function assertNoForbiddenScope(file) {
+  const full = path.join(root, file);
+  const content = fs.readFileSync(full, "utf8").toLowerCase();
+  const forbidden = [
+    "turn a strategy idea",
+    "convert trading ideas",
+    "build and test this strategy idea",
+    "migrate this backtest",
+    "local migration",
+    "freqtrade",
+    "backtrader",
+    "vectorbt",
+    "every generated strategy",
+  ];
+  for (const phrase of forbidden) {
+    assert(!content.includes(phrase), `${file} contains out-of-scope phrase: ${phrase}`);
+  }
+}
+
 const rootMarket = readJson(".codebuddy-plugin/marketplace.json");
 assert(rootMarket.name === "tradingview", "CodeBuddy marketplace name must be tradingview");
 validateSemver(rootMarket.version, "CodeBuddy marketplace");
@@ -65,16 +84,29 @@ for (const file of [
   "plugins/backtest-skill/commands/backtest.md",
   "plugins/backtest-skill/skills/tradingview-backtest/SKILL.md",
   "plugins/backtest-skill/skills/tradingview-backtest/agents/openai.yaml",
-  "plugins/backtest-skill/skills/tradingview-backtest/references/pine-strategy.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/language-use.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/strategy-run.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md",
-  "plugins/backtest-skill/skills/tradingview-backtest/references/result-audit.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/result-analysis.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/alerts-webhooks.md",
-  "plugins/backtest-skill/skills/tradingview-backtest/references/local-migration.md",
 ]) {
   assertFile(file);
 }
 
 validateSkill("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md");
 
-console.log("Validation passed");
+for (const file of [
+  "README.md",
+  "plugins/backtest-skill/README.md",
+  "plugins/backtest-skill/commands/backtest.md",
+  "plugins/backtest-skill/.codex-plugin/plugin.json",
+  "plugins/backtest-skill/.codebuddy-plugin/plugin.json",
+  "plugins/backtest-skill/.claude-plugin/plugin.json",
+  "plugins/backtest-skill/skills/tradingview-backtest/SKILL.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/agents/openai.yaml",
+]) {
+  assertNoForbiddenScope(file);
+}
 
+console.log("Validation passed");

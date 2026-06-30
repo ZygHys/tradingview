@@ -4,7 +4,7 @@ Use this reference when creating TradingView alert messages or webhook payloads.
 
 ## Purpose
 
-TradingView alerts can send strategy or indicator events to an external URL. The receiver should be user-owned infrastructure such as a paper-trading service, Freqtrade webhook endpoint, broker bridge, or custom relay.
+TradingView alerts can send strategy or indicator events to an external URL. The receiver should be user-owned infrastructure such as a paper-trading service, broker bridge, or custom relay.
 
 ## Alert Message Principles
 
@@ -45,4 +45,4 @@ strategy.exit("Long Exit", "Long", stop = stopPrice, limit = targetPrice, alert_
 - Test with paper trading first.
 - Validate retries, timeouts, duplicate events, and idempotency in the receiver.
 - Keep broker or exchange credentials outside TradingView.
-
+- Do not use this reference to create new strategy logic. Only attach payloads to an already-tested supplied strategy.

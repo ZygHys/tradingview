@@ -10,17 +10,17 @@ skills/tradingview-backtest/SKILL.md
 
 ## Goal
 
-Help an AI agent move from a strategy idea to a TradingView Strategy Tester run and then to a reproducible local backtest path.
+Help an AI agent operate TradingView well enough to run a supplied strategy in Strategy Tester, collect results, review the evidence, and iterate supplied versions or parameters toward a target metric such as 20% annualized return.
 
 The plugin solves these recurring gaps:
 
-- Which language to use for each step.
-- How to write Pine Script v6 strategy code that can run in TradingView.
+- Which language or surface to use for each step.
+- How to load, compile, and run an existing Pine Script v6 `strategy()` in TradingView.
 - How to operate the TradingView UI or guide the user manually.
 - How to collect and audit Strategy Tester results.
 - How to detect repaint and lookahead risk.
 - How to generate alert webhook payloads.
-- How to migrate validated strategy logic to Python, Freqtrade, Backtrader, or vectorbt.
+- How to compare runs and iterate user-provided versions or parameter sets without inventing strategy logic.
 
 ## Components
 
@@ -39,6 +39,5 @@ The plugin solves these recurring gaps:
 Ask the agent to use `$tradingview-backtest`, or install the `backtest-skill` plugin from the `tradingview` marketplace and ask naturally:
 
 ```text
-Use the TradingView backtest skill to turn this breakout idea into a Pine v6 strategy, run it in TradingView, and produce a migration plan for Freqtrade.
+Use the TradingView backtest skill to run this existing Pine strategy in TradingView, collect Strategy Tester results, and review whether parameter set B improves annualized return toward 20%.
 ```
-
