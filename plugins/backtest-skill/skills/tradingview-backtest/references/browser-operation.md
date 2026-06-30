@@ -48,8 +48,21 @@ When automating:
 - If direct `fill`, keyboard replace, or paste appends instead of replacing content, stop and switch to a manual checkpoint: ask the user to paste the supplied script into an empty Pine Editor and tell you when it is ready.
 - If a selector fails, stop and ask for a screenshot or manual checkpoint.
 - Keep a log of observed symbol, timeframe, script title, and visible metrics.
+- If TradingView's chart page, Pine Editor, or Strategy Tester repeatedly times out in browser tooling, do not keep retrying the same action. Record a blocked-run entry, then switch to the manual runbook or ask the user to complete the named checkpoint.
 
 Do not use browser automation to design a new strategy from indicators or public accounts. Browser work in this skill is limited to loading supplied code, operating TradingView, collecting results, and comparing already-defined variants or inputs.
+
+## Manual Checkpoints
+
+Use manual checkpoints when account state or UI automation blocks a reliable run:
+
+- `login-ready`: the user has logged in to TradingView and the chart is visible.
+- `editor-empty`: Pine Editor is open and contains no default `indicator("My script")` snippet.
+- `strategy-loaded`: the supplied `strategy()` script is in the editor and has been saved or added to chart.
+- `tester-ready`: Strategy Tester is open and has refreshed results for the visible script.
+- `metrics-captured`: the user has provided a screenshot, copied table, or export.
+
+When a checkpoint is needed, ask only for the exact next checkpoint. Do not ask for credentials or private session artifacts.
 
 ## Evidence to Capture
 

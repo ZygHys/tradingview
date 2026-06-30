@@ -27,26 +27,26 @@ TradingView is strong as a strategy expression, chart review, and signal alert l
 
 ```text
 tradingview/
-├── .codebuddy-plugin/
-│   └── marketplace.json
-├── .agents/
-│   └── plugins/
-│       └── marketplace.json
-├── .claude-plugin/
-│   └── marketplace.json
-├── plugins/
-│   └── backtest-skill/
-│       ├── .codebuddy-plugin/plugin.json
-│       ├── .codex-plugin/plugin.json
-│       ├── .claude-plugin/plugin.json
-│       ├── commands/
-│       ├── skills/
-│       │   └── tradingview-backtest/
-│       │       ├── SKILL.md
-│       │       ├── agents/openai.yaml
-│       │       └── references/
-│       └── scripts/
-└── AGENTS.md
+|-- .codebuddy-plugin/
+|   `-- marketplace.json
+|-- .agents/
+|   `-- plugins/
+|       `-- marketplace.json
+|-- .claude-plugin/
+|   `-- marketplace.json
+|-- plugins/
+|   `-- backtest-skill/
+|       |-- .codebuddy-plugin/plugin.json
+|       |-- .codex-plugin/plugin.json
+|       |-- .claude-plugin/plugin.json
+|       |-- commands/
+|       |-- skills/
+|       |   `-- tradingview-backtest/
+|       |       |-- SKILL.md
+|       |       |-- agents/openai.yaml
+|       |       `-- references/
+|       `-- scripts/
+`-- AGENTS.md
 ```
 
 ## Compatibility Targets

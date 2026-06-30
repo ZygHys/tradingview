@@ -30,6 +30,8 @@ For every run, record:
 - Largest win/loss if visible.
 - Notes on data depth, plan limits, Deep Backtesting, and Bar Magnifier.
 
+Use [run-record-template.md](run-record-template.md) when the output needs to be persisted, compared across runs, or resumed by another agent.
+
 ## Analysis
 
 Classify the result:
@@ -38,6 +40,6 @@ Classify the result:
 - `watch`: target reached but evidence is weak or risk is high.
 - `iterate`: below target but a specific next supplied variant or input set is worth testing.
 - `reject`: insufficient edge, excessive drawdown, too few trades, or invalid setup.
+- `blocked`: TradingView account state, browser instability, missing supplied strategy, or unavailable metrics prevents a valid comparison.
 
 For a 20% annualized return target, never use annualized return alone. Pair it with drawdown, trade count, time coverage, and setup validity.
-

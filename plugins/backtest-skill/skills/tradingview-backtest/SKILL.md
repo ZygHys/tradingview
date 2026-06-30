@@ -21,7 +21,9 @@ description: TradingView usage and backtesting workflow for supplied strategies.
    - Language and artifact choices: read [language-use.md](references/language-use.md).
    - Strategy loading and run setup: read [strategy-run.md](references/strategy-run.md).
    - Browser/UI operation: read [browser-operation.md](references/browser-operation.md).
+   - Browser failure recovery and manual checkpoints: read [failure-recovery.md](references/failure-recovery.md).
    - Result collection and analysis: read [result-analysis.md](references/result-analysis.md).
+   - Run record template: read [run-record-template.md](references/run-record-template.md).
    - Targeted run comparison and iteration: read [iteration-review.md](references/iteration-review.md).
    - Alert/webhook production: read [alerts-webhooks.md](references/alerts-webhooks.md).
 3. Run the smallest complete loop:
@@ -39,6 +41,7 @@ Choose deliverables by task, not by template:
 - TradingView runbook for Strategy Tester.
 - Browser automation checklist and observed UI evidence.
 - Backtest quality report.
+- Completed run record or blocked-run record.
 - Iteration log comparing run settings, annualized return, drawdown, trade count, and risk notes.
 - Alert message and webhook JSON template.
 

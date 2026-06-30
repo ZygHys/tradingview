@@ -87,7 +87,9 @@ for (const file of [
   "plugins/backtest-skill/skills/tradingview-backtest/references/language-use.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/strategy-run.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/result-analysis.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/references/run-record-template.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md",
   "plugins/backtest-skill/skills/tradingview-backtest/references/alerts-webhooks.md",
 ]) {

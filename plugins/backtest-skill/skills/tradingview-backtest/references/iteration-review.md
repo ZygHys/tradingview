@@ -39,3 +39,4 @@ Stop and report instead of continuing when:
 - A run reaches target return only by unacceptable drawdown, too few trades, or missing costs.
 - Further progress requires inventing strategy logic.
 
+When stopping, produce a blocked-run record instead of a vague status update. Include the last observed UI evidence, the missing checkpoint, and the smallest user action needed to resume.
