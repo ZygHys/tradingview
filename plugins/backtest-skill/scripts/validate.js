@@ -27,7 +27,7 @@ function validateSemver(version, label) {
 
 function validateSkill(file) {
   const full = path.join(root, file);
-  const content = fs.readFileSync(full, "utf8");
+  const content = normalizeLineEndings(fs.readFileSync(full, "utf8").replace(/^\uFEFF/, ""));
   assert(content.startsWith("---\n"), `${file} must start with YAML frontmatter`);
   const end = content.indexOf("\n---", 4);
   assert(end !== -1, `${file} must close YAML frontmatter`);
@@ -216,6 +216,7 @@ assert(
 );
 
 for (const file of [
+  ".gitattributes",
   "README.md",
   "AGENTS.md",
   "plugins/backtest-skill/README.md",
