@@ -15,4 +15,4 @@ coverage/
 *.jpeg
 *.webp
 *.gif
-
+!docs/assets/tradingview-new-account-backtest-start/*.png

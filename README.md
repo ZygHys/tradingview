@@ -63,6 +63,10 @@ tradingview/
 `-- AGENTS.md
 ```
 
+## Guides
+
+- [TradingView 新账号回测起步流程](docs/tradingview-new-account-backtest-start.md): from a newly registered account to the first auditable Strategy Tester run, with screenshots for each step.
+
 ## Compatibility Targets
 
 - AME plugin marketplace structure: `.codebuddy-plugin/marketplace.json` plus `plugins/<plugin-name>/`.

@@ -232,6 +232,15 @@ for (const file of [
   ".github/workflows/validate.yml",
   "README.md",
   "AGENTS.md",
+  "docs/tradingview-new-account-backtest-start.md",
+  "docs/assets/tradingview-new-account-backtest-start/00-crowded-layout-no-report.png",
+  "docs/assets/tradingview-new-account-backtest-start/01-logged-in-chart-with-report.png",
+  "docs/assets/tradingview-new-account-backtest-start/01-user-observed-report.png",
+  "docs/assets/tradingview-new-account-backtest-start/02-confirm-symbol-timeframe.png",
+  "docs/assets/tradingview-new-account-backtest-start/03-strategy-on-chart.png",
+  "docs/assets/tradingview-new-account-backtest-start/04-strategy-tester-key-stats.png",
+  "docs/assets/tradingview-new-account-backtest-start/05-equity-curve-drawdown.png",
+  "docs/assets/tradingview-new-account-backtest-start/06-report-detail-section.png",
   "plugins/backtest-skill/README.md",
   "plugins/backtest-skill/commands/backtest.md",
   "plugins/backtest-skill/skills/tradingview-backtest/SKILL.md",
@@ -332,7 +341,20 @@ assertContains("README.md", "fixture-visible/no-real-handoff states");
 assertContains("README.md", "fill-in run-package templates");
 assertContains("README.md", "Stabilize the TradingView operating loop first");
 assertContains("README.md", "Only after the operating loop is stable");
+assertContains("README.md", "TradingView 新账号回测起步流程");
 assertContains("README.md", "GitHub Actions runs the same validator");
+assertContains("docs/tradingview-new-account-backtest-start.md", "本文不是 skill 说明");
+assertContains("docs/tradingview-new-account-backtest-start.md", "主目标是稳定操作闭环");
+assertContains("docs/tradingview-new-account-backtest-start.md", "次目标才是收益率");
+assertContains("docs/tradingview-new-account-backtest-start.md", "刚注册完账号后");
+assertContains("docs/tradingview-new-account-backtest-start.md", "01-logged-in-chart-with-report.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "00-crowded-layout-no-report.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "03-strategy-on-chart.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "04-strategy-tester-key-stats.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "05-equity-curve-drawdown.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "06-report-detail-section.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "01-user-observed-report.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "不要把年化 20% 当作当前阶段目标");
 assertContains("plugins/backtest-skill/README.md", "`strategy()` consumes an indicator slot");
 assertContains("plugins/backtest-skill/README.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/README.md", "Pine Editor");
