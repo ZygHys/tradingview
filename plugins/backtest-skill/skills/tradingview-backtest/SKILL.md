@@ -32,6 +32,7 @@ description: TradingView usage and backtesting workflow for supplied strategies.
    - Alert/webhook production: read [alerts-webhooks.md](references/alerts-webhooks.md).
 3. Run the smallest complete loop:
    - Validate the handoff package when one is provided as JSON.
+   - Create a browser run package with `scripts/create-browser-run-package.js` when a real handoff needs one stable pre-browser artifact.
    - Create a browser run session with `scripts/create-run-session.js` when execution needs a reproducible checklist.
    - Render a browser/manual runbook with `scripts/render-runbook.js` when the checklist should be handed to a browser operator or user.
    - Load or inspect the supplied strategy.
@@ -56,6 +57,7 @@ Choose deliverables by task, not by template:
 
 - Strategy loading/run instructions for the supplied Pine or saved strategy.
 - TradingView runbook for Strategy Tester.
+- Browser run package generated from a strategy handoff.
 - Markdown browser/manual runbook generated from a run session or handoff package.
 - Browser automation checklist and observed UI evidence.
 - Backtest quality report.

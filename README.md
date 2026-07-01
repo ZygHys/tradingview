@@ -24,8 +24,8 @@ TradingView is strong as a strategy expression, chart review, and signal alert l
 6. Only after the operating loop is stable, compare runs and iterate user-provided strategy versions or input parameters toward an explicit target such as annualized return >= 20%, without inventing new trading logic.
 7. Accept a strategy handoff package from users or future strategy-construction plugins before browser execution.
 8. Provide fill-in run-package templates for real strategy handoffs and browser-captured Strategy Tester metrics.
-9. Turn an executable handoff into a browser run session checklist before touching TradingView.
-10. Render Markdown browser/manual runbooks from handoffs or run sessions so execution can be delegated without losing required evidence.
+9. Turn an executable handoff into a browser run package and checklist before touching TradingView.
+10. Render Markdown browser/manual runbooks from handoffs, run sessions, or browser run packages so execution can be delegated without losing required evidence.
 11. Complete browser-captured Strategy Tester metrics into scored run records from run-session seeds.
 12. Render portable Markdown review reports from Strategy Tester run records and supplied run sets.
 13. Emit structured next-run requests so browser or manual execution can continue from pass, watch, iterate, blocked states, fixture-rejected states, or fixture-visible/no-real-handoff states.

@@ -241,6 +241,7 @@ for (const file of [
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/validate-handoff.js",
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/create-run-session.js",
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/render-runbook.js",
+  "plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js",
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/normalize-run-record.js",
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/complete-run-record.js",
   "plugins/backtest-skill/skills/tradingview-backtest/scripts/score-run.js",
@@ -308,12 +309,14 @@ assertContains(".github/workflows/validate.yml", "node scripts/validate.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "strategy handoff package");
 assertContains("plugins/backtest-skill/commands/backtest.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/commands/backtest.md", "Pine Editor");
+assertContains("plugins/backtest-skill/commands/backtest.md", "create-browser-run-package.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "create-run-session.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "render-runbook.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "render-review.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "create-next-run-request.js");
 assertContains("README.md", "strategy handoff package");
 assertContains("README.md", "Pine Editor");
+assertContains("README.md", "browser run package");
 assertContains("README.md", "Markdown browser/manual runbooks");
 assertContains("README.md", "scored run records");
 assertContains("README.md", "Markdown review reports");
@@ -335,6 +338,7 @@ assertContains("plugins/backtest-skill/README.md", "baseline goal is stable TV o
 assertContains("plugins/backtest-skill/README.md", "requires a supplied real strategy");
 assertContains("plugins/backtest-skill/README.md", "complete executable handoff");
 assertContains("plugins/backtest-skill/README.md", "validate-handoff.js");
+assertContains("plugins/backtest-skill/README.md", "create-browser-run-package.js");
 assertContains("plugins/backtest-skill/README.md", "create-run-session.js");
 assertContains("plugins/backtest-skill/README.md", "render-runbook.js");
 assertContains("plugins/backtest-skill/README.md", "normalize-run-record.js");
@@ -367,6 +371,7 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "w
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "Treat return improvement as a later phase");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "operating loop is not stable");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "Validate the handoff package");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "create-browser-run-package.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "create-run-session.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "render-runbook.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "normalize-run-record.js");
@@ -382,7 +387,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/st
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "pine-strategy-handoff-template.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "Do not fill missing trading logic");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "indicator-only-invalid.json");
-assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "Create A Run Session");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "Create A Browser Run Package");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "create-browser-run-package.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "pine-strategy-session.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.md");
@@ -396,6 +402,7 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/en
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "Result Analysis Protocol");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "pine-strategy-handoff-template.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "browser-metrics-template.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "create-browser-run-package.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "complete-run-record.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "render-review.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "render-next-run-request.js");
@@ -403,6 +410,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/en
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/validate-handoff.js", "Pine handoff must contain a strategy(...) declaration.");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-run-session.js", "ready_for_browser_or_manual_run");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/render-runbook.js", "TradingView Browser Runbook");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js", "tradingview_browser_run_package");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js", "ready_for_logged_in_browser");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "create-run-session.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "render-runbook.js");
@@ -481,6 +490,7 @@ const { createBlockedRun } = require(path.join(root, "plugins/backtest-skill/ski
 const { validateHandoff } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/validate-handoff.js"));
 const { createRunSession } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/create-run-session.js"));
 const { renderRunbook } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/render-runbook.js"));
+const { createBrowserRunPackage } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js"));
 const { normalizeRunRecord } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/normalize-run-record.js"));
 const { completeRunRecord } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/complete-run-record.js"));
 const { compareRuns } = require(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/scripts/compare-runs.js"));
@@ -532,6 +542,31 @@ try {
 } finally {
   unlinkIfExists(runbookActualPath);
 }
+
+const expectedRunbook = fs.readFileSync(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/pine-strategy-runbook.md"), "utf8");
+const browserRunPackage = createBrowserRunPackage(pineHandoff, { baseDir: handoffBaseDir });
+assert(browserRunPackage.ok, "Pine strategy browser run package must be ready");
+assert(browserRunPackage.package_type === "tradingview_browser_run_package", "Browser run package type mismatch");
+assert(browserRunPackage.status === "ready_for_logged_in_browser", "Browser run package status mismatch");
+assert(
+  browserRunPackage.run_session.run_session_id === runSessionExample.run_session_id,
+  "Browser run package must preserve the run session id"
+);
+assert(
+  normalizeLineEndings(browserRunPackage.runbook_markdown) === normalizeLineEndings(expectedRunbook),
+  "Browser run package Markdown must match render-runbook.js"
+);
+
+const indicatorOnlyBrowserRunPackage = createBrowserRunPackage(indicatorOnlyHandoff, { baseDir: handoffBaseDir });
+assert(!indicatorOnlyBrowserRunPackage.ok, "Indicator-only browser run package must be blocked");
+assert(
+  indicatorOnlyBrowserRunPackage.status === "blocked_until_executable_handoff",
+  "Indicator-only browser package must require executable handoff"
+);
+assert(
+  indicatorOnlyBrowserRunPackage.next_operator_step.includes("Complete the strategy handoff package"),
+  "Blocked browser package must tell the operator to complete the handoff"
+);
 
 const blockedExampleInput = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-input.json");
 const blockedExampleActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.blocked-report-render-generated.json");

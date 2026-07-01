@@ -31,9 +31,9 @@ Before browser work:
 
 1. Read [strategy-handoff.md](strategy-handoff.md) and verify the artifact is executable.
 2. If the user has no JSON package yet, copy `assets/run-package-templates/pine-strategy-handoff-template.json`, fill it with the supplied strategy details, and keep the filled copy with the run artifacts.
-3. If JSON is available, run `node scripts/validate-handoff.js <handoff.json>`.
-4. Run `node scripts/create-run-session.js <handoff.json>` for a reproducible run seed.
-5. Run `node scripts/render-runbook.js <run-session-or-handoff.json>` when the steps must be handed to a user, browser operator, or another agent.
+3. If JSON is available, run `node scripts/create-browser-run-package.js <handoff.json>` before opening TradingView. The package contains validation, the run-session seed, objective order, guardrails, and a Markdown browser runbook.
+4. Use `node scripts/create-browser-run-package.js <handoff.json> --format markdown` when the steps must be handed directly to a user, browser operator, or another agent.
+5. Use lower-level `node scripts/validate-handoff.js <handoff.json>`, `node scripts/create-run-session.js <handoff.json>`, and `node scripts/render-runbook.js <run-session-or-handoff.json>` only when you need one intermediate artifact.
 6. Stop if the handoff is indicator-only, a trading idea, public-account research, or missing execution rules. Do not fill missing trading logic inside this skill.
 
 If the user has not supplied a real strategy and only wants browser plumbing tested, use the bundled smoke fixture under `assets/pine-fixtures/` and mark the result as workflow evidence only.

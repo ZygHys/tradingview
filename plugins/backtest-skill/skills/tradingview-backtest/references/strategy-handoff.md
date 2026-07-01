@@ -68,9 +68,23 @@ node scripts/validate-handoff.js -
 
 The validator only checks execution readiness. It does not judge strategy quality, financial merit, or whether the target will be reached.
 
-## Create A Run Session
+## Create A Browser Run Package
 
-After validation passes, create a browser run-session checklist before operating TradingView:
+After validation passes, create a browser run package before operating TradingView:
+
+```bash
+node scripts/create-browser-run-package.js handoff.json
+```
+
+Use `--format markdown` when a browser operator needs a direct runbook:
+
+```bash
+node scripts/create-browser-run-package.js handoff.json --format markdown
+```
+
+The package combines validation, run-session seed, objective order, guardrails, and a Markdown runbook. If validation fails, it blocks before opening TradingView.
+
+Use lower-level scripts only when a specific intermediate artifact is needed:
 
 ```bash
 node scripts/create-run-session.js handoff.json

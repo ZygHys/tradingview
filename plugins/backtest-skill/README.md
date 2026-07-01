@@ -38,6 +38,7 @@ The plugin solves these recurring gaps:
 | `skills/tradingview-backtest/scripts/validate-handoff.js` | Dependency-free checker for executable strategy handoff packages |
 | `skills/tradingview-backtest/scripts/create-run-session.js` | Dependency-free generator for browser run checklists from validated handoffs |
 | `skills/tradingview-backtest/scripts/render-runbook.js` | Dependency-free Markdown runbook renderer for browser/manual execution |
+| `skills/tradingview-backtest/scripts/create-browser-run-package.js` | Dependency-free one-step browser package generator from a handoff |
 | `skills/tradingview-backtest/scripts/normalize-run-record.js` | Dependency-free normalizer for copied Strategy Tester metrics |
 | `skills/tradingview-backtest/scripts/complete-run-record.js` | Dependency-free merger for browser-captured metrics and run-session seeds |
 | `skills/tradingview-backtest/scripts/score-run.js` | Dependency-free scorer for Strategy Tester run records |
@@ -70,6 +71,7 @@ The plugin solves these recurring gaps:
 - A validated handoff can be converted into a browser run checklist with `skills/tradingview-backtest/scripts/create-run-session.js`.
 - `assets/run-session-examples/pine-strategy-session.json` shows the pre-browser checkpoints, browser steps, required evidence, and run-record seed.
 - A run session or executable handoff can be rendered into a Markdown browser/manual runbook with `skills/tradingview-backtest/scripts/render-runbook.js`.
+- A handoff can be converted into a complete browser run package with `skills/tradingview-backtest/scripts/create-browser-run-package.js`; use `--format markdown` when handing the runbook directly to a browser operator.
 - `assets/runbook-examples/pine-strategy-runbook.md` shows the browser checklist, evidence checklist, stop conditions, and run-record seed for a Pine strategy run.
 - Copied or transcribed Strategy Tester metrics can be normalized with `skills/tradingview-backtest/scripts/normalize-run-record.js`.
 - `assets/run-record-examples/copied-metrics-cn-input.json` shows Chinese TradingView summary labels normalized into a run record.
