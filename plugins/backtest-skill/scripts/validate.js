@@ -241,6 +241,7 @@ for (const file of [
   "docs/assets/tradingview-new-account-backtest-start/04-strategy-tester-key-stats.png",
   "docs/assets/tradingview-new-account-backtest-start/05-equity-curve-drawdown.png",
   "docs/assets/tradingview-new-account-backtest-start/06-report-detail-section.png",
+  "docs/assets/tradingview-new-account-backtest-start/12-report-equity-ups-downs-and-capital-efficiency.png",
   "docs/assets/tradingview-new-account-backtest-start/07-before-opening-pine-editor.png",
   "docs/assets/tradingview-new-account-backtest-start/08-pine-panel-current-state.png",
   "docs/assets/tradingview-new-account-backtest-start/09-pine-editor-code-closeup.png",
@@ -366,10 +367,14 @@ assertContains("docs/tradingview-new-account-backtest-start.md", "03-strategy-on
 assertContains("docs/tradingview-new-account-backtest-start.md", "04-strategy-tester-key-stats.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "05-equity-curve-drawdown.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "06-report-detail-section.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "12-report-equity-ups-downs-and-capital-efficiency.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "07-before-opening-pine-editor.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "08-pine-panel-current-state.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "09-pine-editor-code-closeup.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "01-user-observed-report.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "TV Backtest Skill Chart Rich Fixture v4");
+assertContains("docs/tradingview-new-account-backtest-start.md", "没有足够的数据显示");
+assertContains("docs/tradingview-new-account-backtest-start.md", "先改策略样本或扩大样本");
 assertContains("docs/tradingview-new-account-backtest-start.md", "不要把年化 20% 当作当前阶段目标");
 assertContains("plugins/backtest-skill/README.md", "`strategy()` consumes an indicator slot");
 assertContains("plugins/backtest-skill/README.md", "end-to-end-browser-run.md");
