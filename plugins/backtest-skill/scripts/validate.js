@@ -241,6 +241,9 @@ for (const file of [
   "docs/assets/tradingview-new-account-backtest-start/04-strategy-tester-key-stats.png",
   "docs/assets/tradingview-new-account-backtest-start/05-equity-curve-drawdown.png",
   "docs/assets/tradingview-new-account-backtest-start/06-report-detail-section.png",
+  "docs/assets/tradingview-new-account-backtest-start/07-before-opening-pine-editor.png",
+  "docs/assets/tradingview-new-account-backtest-start/08-pine-panel-current-state.png",
+  "docs/assets/tradingview-new-account-backtest-start/09-pine-editor-code-closeup.png",
   "plugins/backtest-skill/README.md",
   "plugins/backtest-skill/commands/backtest.md",
   "plugins/backtest-skill/skills/tradingview-backtest/SKILL.md",
@@ -342,17 +345,30 @@ assertContains("README.md", "fill-in run-package templates");
 assertContains("README.md", "Stabilize the TradingView operating loop first");
 assertContains("README.md", "Only after the operating loop is stable");
 assertContains("README.md", "TradingView 新账号回测起步流程");
+assertContains("README.md", "what a Pine `strategy()` script is");
 assertContains("README.md", "GitHub Actions runs the same validator");
 assertContains("docs/tradingview-new-account-backtest-start.md", "本文不是 skill 说明");
 assertContains("docs/tradingview-new-account-backtest-start.md", "主目标是稳定操作闭环");
 assertContains("docs/tradingview-new-account-backtest-start.md", "次目标才是收益率");
 assertContains("docs/tradingview-new-account-backtest-start.md", "刚注册完账号后");
+assertContains("docs/tradingview-new-account-backtest-start.md", "先搞清楚“脚本”是什么");
+assertContains("docs/tradingview-new-account-backtest-start.md", "最小可运行 strategy");
+assertContains("docs/tradingview-new-account-backtest-start.md", "indicator(...)");
+assertContains("docs/tradingview-new-account-backtest-start.md", "strategy.entry");
+assertContains("docs/tradingview-new-account-backtest-start.md", "写 strategy 脚本的固定骨架");
+assertContains("docs/tradingview-new-account-backtest-start.md", "把一句交易想法翻成 Pine");
+assertContains("docs/tradingview-new-account-backtest-start.md", "只画线不等于下单");
+assertContains("docs/tradingview-new-account-backtest-start.md", "Pine Editor 是 TradingView 内置的脚本编辑器");
+assertContains("docs/tradingview-new-account-backtest-start.md", "不要点击它");
 assertContains("docs/tradingview-new-account-backtest-start.md", "01-logged-in-chart-with-report.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "00-crowded-layout-no-report.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "03-strategy-on-chart.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "04-strategy-tester-key-stats.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "05-equity-curve-drawdown.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "06-report-detail-section.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "07-before-opening-pine-editor.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "08-pine-panel-current-state.png");
+assertContains("docs/tradingview-new-account-backtest-start.md", "09-pine-editor-code-closeup.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "01-user-observed-report.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "不要把年化 20% 当作当前阶段目标");
 assertContains("plugins/backtest-skill/README.md", "`strategy()` consumes an indicator slot");

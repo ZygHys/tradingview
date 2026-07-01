@@ -65,7 +65,7 @@ tradingview/
 
 ## Guides
 
-- [TradingView 新账号回测起步流程](docs/tradingview-new-account-backtest-start.md): from a newly registered account to the first auditable Strategy Tester run, with screenshots for each step.
+- [TradingView 新账号回测起步流程](docs/tradingview-new-account-backtest-start.md): from a newly registered account to the first auditable Strategy Tester run, including what a Pine `strategy()` script is, how to paste/save it in Pine Editor, and screenshots for each step.
 
 ## Compatibility Targets
 
