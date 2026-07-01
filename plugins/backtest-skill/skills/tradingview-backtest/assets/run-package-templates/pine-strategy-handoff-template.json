@@ -1,0 +1,30 @@
+{
+  "handoff": {
+    "strategy_name": "<supplied-strategy-name>",
+    "strategy_version": "<supplied-version-or-parameter-set>",
+    "artifact_type": "pine_strategy",
+    "pine_source_path_or_inline_code": "<relative-pine-file-path-or-inline-pine-strategy-code>",
+    "symbol": "<symbol>",
+    "exchange": "<exchange>",
+    "timeframe": "<timeframe>",
+    "chart_type": "candles",
+    "date_range": "<test-date-range-or-visible-chart-range>",
+    "initial_capital": "<initial-capital>",
+    "order_size": "<order-size>",
+    "commission": "<commission>",
+    "slippage": "<slippage>",
+    "pyramiding": "<pyramiding>",
+    "margin": "<margin>",
+    "target_metric": "annualized_return",
+    "target_threshold": "20%",
+    "parameter_sets": [
+      {
+        "name": "<parameter-set-name>",
+        "values": {}
+      }
+    ],
+    "allowed_next_variants": [
+      "Only run supplied Pine versions, saved TradingView strategies, or supplied parameter sets."
+    ]
+  }
+}

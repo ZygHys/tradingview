@@ -1,0 +1,33 @@
+{
+  "handoff": {
+    "strategy_name": "TV Backtest Skill Fixture EMA Cross v1",
+    "strategy_version": "smoke-v1",
+    "artifact_type": "pine_strategy",
+    "pine_source_path_or_inline_code": "../pine-fixtures/ema-cross-smoke-v1.pine",
+    "symbol": "BTCUSDT",
+    "exchange": "OKX",
+    "timeframe": "5m",
+    "chart_type": "candles",
+    "date_range": "user-selected TradingView chart range",
+    "initial_capital": "10000 USDT",
+    "order_size": "100% of equity",
+    "commission": "0.1%",
+    "slippage": "1 tick",
+    "pyramiding": "0",
+    "margin": "TradingView default",
+    "target_metric": "annualized_return",
+    "target_threshold": "20%",
+    "parameter_sets": [
+      {
+        "name": "default-12-26",
+        "values": {
+          "Fast EMA": 12,
+          "Slow EMA": 26
+        }
+      }
+    ],
+    "allowed_next_variants": [
+      "Use only supplied Pine versions or supplied parameter sets."
+    ]
+  }
+}

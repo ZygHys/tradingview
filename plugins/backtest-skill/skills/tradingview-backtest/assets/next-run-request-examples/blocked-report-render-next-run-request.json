@@ -1,0 +1,55 @@
+{
+  "ok": false,
+  "request_type": "next_tradingview_run_request",
+  "status": "blocked_until_user_supplies_artifact",
+  "target": {
+    "metric": "annualized_return",
+    "threshold": "20.00%"
+  },
+  "based_on": {
+    "best_run_id": "example-blocked-report-render-v1",
+    "best_status": "blocked",
+    "best_annualized_return": "n/a",
+    "best_max_drawdown": "n/a",
+    "best_total_trades": "n/a",
+    "best_profit_factor": "n/a",
+    "strategy": {
+      "name": "Example Supplied Strategy",
+      "version": "v1",
+      "source": "supplied_pine",
+      "fixture_only": false
+    },
+    "market": {
+      "exchange": "OKX",
+      "symbol": "BTCUSDT",
+      "timeframe": "5m",
+      "test_days": "n/a"
+    },
+    "changed_variable": "first browser run for this supplied strategy"
+  },
+  "next_action": "recover-missing-evidence",
+  "required_user_artifact": "Missing Strategy Tester metrics, screenshot, copied table, export, or explicit browser recovery approval.",
+  "browser_step": "Resume only at the missing checkpoint named in the blocked run record.",
+  "acceptance_checkpoints": [
+    "strategy handoff is supplied and executable",
+    "TradingView chart symbol, exchange, timeframe, and date range are recorded",
+    "Strategy Tester metrics or export are captured",
+    "run record is normalized, scored, compared, and rendered into a review"
+  ],
+  "guardrails": [
+    "Do not invent or modify trading rules inside this backtest skill.",
+    "Do not tune bundled smoke-test fixtures toward the target.",
+    "Do not claim target success until annualized return, drawdown, trade count, profit factor, costs, and evidence quality are checked.",
+    "Use browser recovery only for layout/report issues, not for subscription bypass or credential capture."
+  ],
+  "comparison_summary": {
+    "decision": "No comparable run is ready.",
+    "next_allowed_step": "Collect complete Strategy Tester metrics or exports.",
+    "pass_count": 0,
+    "watch_count": 0,
+    "comparable_count": 0,
+    "errors": [
+      "No comparable runs have complete metrics."
+    ]
+  }
+}

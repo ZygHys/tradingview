@@ -1,0 +1,85 @@
+{
+  "run_record": {
+    "run_id": "example-blocked-report-render-v1",
+    "status": "blocked",
+    "timestamp": "2026-07-01T00:00:00Z",
+    "operator": "agent",
+    "target": {
+      "metric": "annualized_return",
+      "threshold": "20%",
+      "continuation_gate": "supplied_strategy_or_supplied_parameter_set"
+    },
+    "strategy": {
+      "name": "Example Supplied Strategy",
+      "version": "v1",
+      "source": "supplied_pine",
+      "script_is_strategy": true,
+      "fixture_only": false
+    },
+    "market": {
+      "symbol": "BTCUSDT",
+      "exchange": "OKX",
+      "timeframe": "5m",
+      "chart_type": "candles",
+      "session": "user-mediated TradingView browser session"
+    },
+    "properties": {
+      "deep_backtesting": "unavailable",
+      "bar_magnifier": "unavailable"
+    },
+    "inputs": {
+      "changed_from_prior_run": "first browser run for this supplied strategy",
+      "values": {
+        "Fast length": 12,
+        "Slow length": 26
+      }
+    },
+    "metrics": {},
+    "evidence": {
+      "screenshots": [
+        "screenshots/report-panel-blank.png"
+      ],
+      "exports": [],
+      "copied_tables": [],
+      "browser_notes": [
+        "The supplied strategy legend row is visible on the chart.",
+        "Chart order markers are visible.",
+        "A Basic 5,000 bars / data-depth prompt appeared.",
+        "Strategy Tester or Strategy Report content stayed blank after opening and expanding the panel.",
+        "No Strategy Tester summary, trade list, copied table, or export was captured."
+      ]
+    },
+    "analysis": {
+      "workflow_result": "blocked",
+      "strategy_quality": "blocked",
+      "setup_validity": "partial: strategy appears loaded, but Strategy Tester metrics are unavailable",
+      "repaint_or_lookahead_risk": "unknown",
+      "cost_and_fill_risk": "unknown",
+      "overfit_risk": "unknown",
+      "comparison_to_target": "not_comparable",
+      "decision": "blocked_at_report_render",
+      "next_allowed_step": "Provide Strategy Tester metrics via screenshot, copied table, or export; or explicitly approve one saved-layout reload."
+    },
+    "blocked": {
+      "blocking_condition": "blocked_at_report_render",
+      "missing_checkpoints": [
+        "metrics-captured",
+        "Strategy Tester screenshot, copied table, or export"
+      ],
+      "what_was_attempted": [
+        "Opened Strategy Tester or Strategy Report.",
+        "Expanded the report panel.",
+        "Selected the visible strategy row.",
+        "Checked for summary and trade-list evidence."
+      ],
+      "smallest_resume_action": "Provide Strategy Tester metrics via screenshot, copied table, or export; or explicitly approve one saved-layout reload.",
+      "not_attempted": [
+        "credential capture",
+        "subscription or trial activation",
+        "broker automation",
+        "inventing new strategy logic",
+        "claiming performance from chart order markers"
+      ]
+    }
+  }
+}

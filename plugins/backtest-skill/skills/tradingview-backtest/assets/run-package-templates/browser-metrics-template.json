@@ -1,0 +1,70 @@
+{
+  "timestamp": "<iso-8601-timestamp>",
+  "operator": "agent",
+  "run_record_seed": {
+    "run_id": "<copy-from-create-run-session-output>",
+    "status": "blocked_until_metrics_captured",
+    "target": {
+      "metric": "annualized_return",
+      "threshold": "20%",
+      "continuation_gate": "supplied_strategy_or_supplied_parameter_set"
+    },
+    "strategy": {
+      "name": "<supplied-strategy-name>",
+      "version": "<supplied-version-or-parameter-set>",
+      "source": "pine_strategy",
+      "script_is_strategy": true,
+      "fixture_only": false
+    },
+    "market": {
+      "symbol": "<symbol>",
+      "exchange": "<exchange>",
+      "timeframe": "<timeframe>",
+      "chart_type": "candles",
+      "date_range": "<yyyy-mm-dd to yyyy-mm-dd>",
+      "test_days": "<optional-number-of-days>"
+    },
+    "properties": {
+      "initial_capital": "<initial-capital>",
+      "order_size": "<order-size>",
+      "commission": "<commission>",
+      "slippage": "<slippage>",
+      "pyramiding": "<pyramiding>",
+      "margin": "<margin>"
+    },
+    "evidence": {
+      "screenshots": [],
+      "exports": [],
+      "copied_tables": [],
+      "browser_notes": []
+    },
+    "analysis": {
+      "workflow_result": "pending_metrics",
+      "strategy_quality": "unknown",
+      "decision": "metrics-captured required before scoring",
+      "next_allowed_step": "collect Strategy Tester summary evidence, then run complete-run-record.js"
+    }
+  },
+  "fields": {
+    "net profit": "<net-profit-and-return>",
+    "max drawdown": "<max-drawdown-and-percent>",
+    "total closed trades": "<total-trades>",
+    "percent profitable": "<win-rate>",
+    "profit factor": "<profit-factor>",
+    "average trade": "<average-trade>"
+  },
+  "evidence": {
+    "screenshots": [
+      "<strategy-tester-overview-screenshot>"
+    ],
+    "exports": [
+      "<optional-export-path>"
+    ],
+    "copied_tables": [
+      "<copied-summary-or-trades-table>"
+    ],
+    "browser_notes": [
+      "<symbol/timeframe/layout/plan-limit-observations>"
+    ]
+  }
+}

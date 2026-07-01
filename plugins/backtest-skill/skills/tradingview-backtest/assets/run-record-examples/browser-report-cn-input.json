@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-07-01T07:00:00Z",
+  "operator": "agent",
+  "run_record_seed": {
+    "run_id": "tv-tv-backtest-skill-fixture-ema-cross-v1-smoke-v1-btcusdt-5m",
+    "status": "blocked_until_metrics_captured",
+    "target": {
+      "metric": "annualized_return",
+      "threshold": "20%",
+      "continuation_gate": "supplied_strategy_or_supplied_parameter_set"
+    },
+    "strategy": {
+      "name": "TV Backtest Skill Fixture EMA Cross v1",
+      "version": "smoke-v1",
+      "source": "pine_strategy",
+      "script_is_strategy": true,
+      "fixture_only": true
+    },
+    "market": {
+      "symbol": "BTCUSDT",
+      "exchange": "OKX",
+      "timeframe": "5m",
+      "chart_type": "candles",
+      "date_range": "2026-06-08 to 2026-07-01"
+    },
+    "properties": {
+      "initial_capital": "10000 USDT",
+      "order_size": "100% of equity",
+      "commission": "0.1%",
+      "slippage": "1 tick",
+      "pyramiding": "0",
+      "margin": "TradingView default"
+    },
+    "evidence": {
+      "screenshots": [],
+      "exports": [],
+      "copied_tables": [],
+      "browser_notes": []
+    },
+    "analysis": {
+      "workflow_result": "pending_metrics",
+      "strategy_quality": "unknown",
+      "decision": "metrics-captured required before scoring",
+      "next_allowed_step": "collect Strategy Tester summary evidence, then run score-run.js"
+    }
+  },
+  "fields": {
+    "\u603b\u635f\u76ca": "-2,550.33 USDT -25.50%",
+    "\u6700\u5927\u56de\u64a4": "2,585.25 USDT 25.84%",
+    "\u76c8\u5229\u4ea4\u6613": "21 / 129 16.28%",
+    "\u76c8\u5229\u56e0\u5b50": "0.292"
+  },
+  "evidence": {
+    "screenshots": [
+      "browser-screenshot-before-indicator-removal.png",
+      "browser-screenshot-after-indicator-removal.png"
+    ],
+    "copied_tables": [
+      "TradingView Strategy Tester summary fields transcribed from Chinese UI"
+    ],
+    "browser_notes": [
+      "Logged-in Chrome TradingView chart on BTCUSDT OKX 5m.",
+      "Backed up the chart screenshot, removed the non-strategy overlay indicator, and kept the strategy legend visible.",
+      "Strategy Tester metrics remained negative after the overlay removal."
+    ]
+  }
+}

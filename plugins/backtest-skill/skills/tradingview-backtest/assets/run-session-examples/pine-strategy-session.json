@@ -1,0 +1,103 @@
+{
+  "ok": true,
+  "status": "ready_for_browser_or_manual_run",
+  "run_session_id": "tv-tv-backtest-skill-fixture-ema-cross-v1-smoke-v1-btcusdt-5m",
+  "validation": {
+    "ok": true,
+    "artifact_type": "pine_strategy",
+    "errors": [],
+    "warnings": []
+  },
+  "handoff_summary": {
+    "strategy_name": "TV Backtest Skill Fixture EMA Cross v1",
+    "strategy_version": "smoke-v1",
+    "artifact_type": "pine_strategy",
+    "symbol": "BTCUSDT",
+    "exchange": "OKX",
+    "timeframe": "5m",
+    "chart_type": "candles",
+    "target_metric": "annualized_return",
+    "target_threshold": "20%",
+    "parameter_sets": [
+      "default-12-26"
+    ]
+  },
+  "browser_preflight_checkpoints": [
+    "login-ready",
+    "blank-layout-ready or one free indicator slot",
+    "symbol-timeframe-confirmed",
+    "strategy-added",
+    "tester-ready",
+    "metrics-captured"
+  ],
+  "browser_steps": [
+    "Open the logged-in TradingView chart without refreshing an in-progress layout unless explicitly approved.",
+    "Confirm symbol, exchange, timeframe, chart type, and date range.",
+    "Open Pine Editor.",
+    "Replace existing editor contents with the supplied Pine strategy.",
+    "Verify the editor contains strategy(...) and not only indicator(...).",
+    "Save the script.",
+    "Add the strategy to chart.",
+    "Open Strategy Tester or Strategy Report.",
+    "Capture Overview, Performance Summary, List of Trades, and Properties when available.",
+    "Record plan/data-depth prompts and any report-rendering blockers."
+  ],
+  "required_evidence": [
+    "screenshot or copied table for Strategy Tester summary",
+    "strategy properties or settings snapshot",
+    "date range and available data depth",
+    "net profit or net return",
+    "max drawdown",
+    "total trades",
+    "win rate",
+    "profit factor"
+  ],
+  "allowed_iteration_scope": [
+    "Use only supplied Pine versions.",
+    "Use only supplied parameter sets.",
+    "Stop if improvement requires new entry, exit, filter, stop, or take-profit logic."
+  ],
+  "run_record_seed": {
+    "run_id": "tv-tv-backtest-skill-fixture-ema-cross-v1-smoke-v1-btcusdt-5m",
+    "status": "blocked_until_metrics_captured",
+    "target": {
+      "metric": "annualized_return",
+      "threshold": "20%",
+      "continuation_gate": "supplied_strategy_or_supplied_parameter_set"
+    },
+    "strategy": {
+      "name": "TV Backtest Skill Fixture EMA Cross v1",
+      "version": "smoke-v1",
+      "source": "pine_strategy",
+      "script_is_strategy": true,
+      "fixture_only": true
+    },
+    "market": {
+      "symbol": "BTCUSDT",
+      "exchange": "OKX",
+      "timeframe": "5m",
+      "chart_type": "candles",
+      "date_range": "user-selected TradingView chart range"
+    },
+    "properties": {
+      "initial_capital": "10000 USDT",
+      "order_size": "100% of equity",
+      "commission": "0.1%",
+      "slippage": "1 tick",
+      "pyramiding": "0",
+      "margin": "TradingView default"
+    },
+    "evidence": {
+      "screenshots": [],
+      "exports": [],
+      "copied_tables": [],
+      "browser_notes": []
+    },
+    "analysis": {
+      "workflow_result": "pending_metrics",
+      "strategy_quality": "unknown",
+      "decision": "metrics-captured required before scoring",
+      "next_allowed_step": "collect Strategy Tester summary evidence, then run score-run.js"
+    }
+  }
+}

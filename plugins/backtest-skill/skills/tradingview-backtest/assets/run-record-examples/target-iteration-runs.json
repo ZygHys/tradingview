@@ -1,0 +1,74 @@
+{
+  "runs": [
+    {
+      "run_record": {
+        "run_id": "example-param-a",
+        "target": {
+          "metric": "annualized_return",
+          "threshold": "20%"
+        },
+        "strategy": {
+          "name": "Example Supplied Strategy",
+          "version": "v1",
+          "source": "supplied_pine",
+          "script_is_strategy": true,
+          "fixture_only": false
+        },
+        "market": {
+          "symbol": "BTCUSDT",
+          "exchange": "OKX",
+          "timeframe": "5m",
+          "test_days": 30
+        },
+        "inputs": {
+          "changed_from_prior_run": "baseline supplied parameter set",
+          "values": {
+            "Fast length": 12,
+            "Slow length": 26
+          }
+        },
+        "metrics": {
+          "net_return": "1.00%",
+          "max_drawdown": "8.00%",
+          "total_trades": 64,
+          "profit_factor": "1.05"
+        }
+      }
+    },
+    {
+      "run_record": {
+        "run_id": "example-param-b",
+        "target": {
+          "metric": "annualized_return",
+          "threshold": "20%"
+        },
+        "strategy": {
+          "name": "Example Supplied Strategy",
+          "version": "v1",
+          "source": "supplied_pine",
+          "script_is_strategy": true,
+          "fixture_only": false
+        },
+        "market": {
+          "symbol": "BTCUSDT",
+          "exchange": "OKX",
+          "timeframe": "5m",
+          "test_days": 30
+        },
+        "inputs": {
+          "changed_from_prior_run": "supplied parameter set B",
+          "values": {
+            "Fast length": 8,
+            "Slow length": 21
+          }
+        },
+        "metrics": {
+          "net_return": "2.00%",
+          "max_drawdown": "10.00%",
+          "total_trades": 61,
+          "profit_factor": "1.20"
+        }
+      }
+    }
+  ]
+}

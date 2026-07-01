@@ -16,12 +16,22 @@ The repository is a marketplace named `tradingview`. It is intended to host mult
 
 TradingView is strong as a strategy expression, chart review, and signal alert layer. It is weaker as a bulk public trade-record database or a local offline backtesting engine. This marketplace focuses on using TradingView correctly:
 
-1. Decide which language or surface is used for each step: Pine for existing TradingView strategies, browser automation for UI operation, CSV/JSON for result artifacts, and Markdown for review notes.
-2. Run a supplied `strategy()` script, built-in/public strategy, or saved TradingView strategy version inside Strategy Tester.
-3. Check setup assumptions: symbol, timeframe, chart type, date range, commission, slippage, sizing, pyramiding, plan/data limitations, repaint, and lookahead risk.
-4. Extract or summarize Strategy Tester results from the UI, screenshots, copied tables, or exported files.
-5. Compare runs and iterate user-provided strategy versions or input parameters toward an explicit target such as annualized return >= 20%, without inventing new trading logic.
-6. Produce alert and webhook payload templates when the already-tested strategy is ready for forward testing.
+1. Stabilize the TradingView operating loop first: browser access, layout handling, Pine Editor or saved strategy loading, Strategy Tester refresh, evidence capture, result analysis, and next-run handoff.
+2. Decide which language or surface is used for each step: Pine for existing TradingView strategies, browser automation for UI operation, CSV/JSON for result artifacts, and Markdown for review notes.
+3. Write a supplied Pine `strategy()` into Pine Editor, save it, add it to chart, and run it through Strategy Tester.
+4. Check setup assumptions: symbol, timeframe, chart type, date range, commission, slippage, sizing, pyramiding, plan/data limitations, repaint, and lookahead risk.
+5. Extract or summarize Strategy Tester results from the UI, screenshots, copied tables, or exported files.
+6. Only after the operating loop is stable, compare runs and iterate user-provided strategy versions or input parameters toward an explicit target such as annualized return >= 20%, without inventing new trading logic.
+7. Accept a strategy handoff package from users or future strategy-construction plugins before browser execution.
+8. Provide fill-in run-package templates for real strategy handoffs and browser-captured Strategy Tester metrics.
+9. Turn an executable handoff into a browser run session checklist before touching TradingView.
+10. Render Markdown browser/manual runbooks from handoffs or run sessions so execution can be delegated without losing required evidence.
+11. Complete browser-captured Strategy Tester metrics into scored run records from run-session seeds.
+12. Render portable Markdown review reports from Strategy Tester run records and supplied run sets.
+13. Emit structured next-run requests so browser or manual execution can continue from pass, watch, iterate, blocked, or fixture-rejected states.
+14. Render Markdown next-run handoff requests for users or browser operators.
+15. Produce blocked-run records when TradingView account, layout, plan, browser, or report-rendering state prevents auditable metrics.
+16. Produce alert and webhook payload templates when the already-tested strategy is ready for forward testing.
 
 ## Repository Layout
 
@@ -44,7 +54,9 @@ tradingview/
 |       |   `-- tradingview-backtest/
 |       |       |-- SKILL.md
 |       |       |-- agents/openai.yaml
-|       |       `-- references/
+|       |       |-- references/
+|       |       |-- scripts/
+|       |       `-- assets/
 |       `-- scripts/
 `-- AGENTS.md
 ```
@@ -55,6 +67,7 @@ tradingview/
 - Codex repo-scoped marketplace structure: `.agents/plugins/marketplace.json` plus `.codex-plugin/plugin.json`.
 - Claude Code plugin-compatible structure: `.claude-plugin/marketplace.json` plus `.claude-plugin/plugin.json`.
 - Agent Skills structure: `skills/<skill-name>/SKILL.md` with `name` and `description` frontmatter.
+- Plugin resources stay inside the plugin tree so cached plugin installs do not depend on repository-external paths.
 
 ## Install Notes
 
@@ -76,6 +89,21 @@ If the marketplace is not discovered automatically, use the host's plugin market
 ### Claude Code
 
 Use the Claude Code plugin marketplace flow for this repository and install `backtest-skill`. The plugin includes a `.claude-plugin/plugin.json` manifest and a standard Agent Skill folder.
+
+## Validation
+
+Run the repository validator before publishing. It checks marketplace manifests, plugin manifests, paths, versions, required files, and generated example artifacts.
+
+```bash
+node plugins/backtest-skill/scripts/validate.js
+```
+
+For Codex skill/plugin compatibility, run the local creator validators when those tool bundles are available:
+
+```bash
+python <skill-creator>/scripts/quick_validate.py plugins/backtest-skill/skills/tradingview-backtest
+python <plugin-creator>/scripts/validate_plugin.py plugins/backtest-skill
+```
 
 ## Backtest Skill Scope
 
@@ -103,3 +131,5 @@ The skill is deliberately workflow-first. It can use browser automation when the
 - TradingView Strategy Tester docs: https://www.tradingview.com/support/categories/strategy-tester/
 - TradingView webhook alert docs: https://www.tradingview.com/support/solutions/43000529348-how-to-configure-webhook-alerts/
 - Agent Skills reference: https://agentskills.io/
+- Claude Code plugin marketplaces: https://code.claude.com/docs/en/plugin-marketplaces
+- Claude Code plugins reference: https://code.claude.com/docs/en/plugins-reference

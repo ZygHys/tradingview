@@ -1,0 +1,12 @@
+{
+  "handoff": {
+    "strategy_name": "Indicator Only Example",
+    "artifact_type": "pine_strategy",
+    "pine_source_path_or_inline_code": "//@version=6\nindicator(\"Indicator Only Example\", overlay=true)\nplot(close)",
+    "symbol": "BTCUSDT",
+    "exchange": "OKX",
+    "timeframe": "5m",
+    "target_metric": "annualized_return",
+    "target_threshold": "20%"
+  }
+}

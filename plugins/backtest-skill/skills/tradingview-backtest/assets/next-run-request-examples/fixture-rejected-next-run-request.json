@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "request_type": "next_tradingview_run_request",
+  "status": "blocked_until_user_supplies_artifact",
+  "target": {
+    "metric": "annualized_return",
+    "threshold": "20.00%"
+  },
+  "based_on": {
+    "best_run_id": "tv-tv-backtest-skill-fixture-ema-cross-v1-smoke-v1-btcusdt-5m",
+    "best_status": "reject",
+    "best_annualized_return": "-99.06%",
+    "best_max_drawdown": "25.84%",
+    "best_total_trades": 129,
+    "best_profit_factor": 0.292,
+    "strategy": {
+      "name": "TV Backtest Skill Fixture EMA Cross v1",
+      "version": "smoke-v1",
+      "source": "pine_strategy",
+      "fixture_only": true
+    },
+    "market": {
+      "exchange": "OKX",
+      "symbol": "BTCUSDT",
+      "timeframe": "5m",
+      "test_days": 23
+    },
+    "changed_variable": "n/a"
+  },
+  "next_action": "request-real-strategy-handoff",
+  "required_user_artifact": "A real supplied Pine strategy(), saved TradingView strategy, Strategy Tester artifact, or supplied parameter/version set.",
+  "browser_step": "Do not continue browser optimization on the bundled smoke-test fixture.",
+  "acceptance_checkpoints": [
+    "strategy handoff is supplied and executable",
+    "TradingView chart symbol, exchange, timeframe, and date range are recorded",
+    "Strategy Tester metrics or export are captured",
+    "run record is normalized, scored, compared, and rendered into a review"
+  ],
+  "guardrails": [
+    "Do not invent or modify trading rules inside this backtest skill.",
+    "Do not tune bundled smoke-test fixtures toward the target.",
+    "Do not claim target success until annualized return, drawdown, trade count, profit factor, costs, and evidence quality are checked.",
+    "Use browser recovery only for layout/report issues, not for subscription bypass or credential capture."
+  ],
+  "comparison_summary": {
+    "decision": "tv-tv-backtest-skill-fixture-ema-cross-v1-smoke-v1-btcusdt-5m is the strongest available run, but it is not acceptable.",
+    "next_allowed_step": "Request a real supplied strategy version or parameter set with a different setup.",
+    "pass_count": 0,
+    "watch_count": 0,
+    "comparable_count": 1,
+    "errors": []
+  }
+}

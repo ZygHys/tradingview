@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "request_type": "next_tradingview_run_request",
+  "status": "ready_for_next_run",
+  "target": {
+    "metric": "annualized_return",
+    "threshold": "20.00%"
+  },
+  "based_on": {
+    "best_run_id": "example-param-b",
+    "best_status": "pass",
+    "best_annualized_return": "27.24%",
+    "best_max_drawdown": "10.00%",
+    "best_total_trades": 61,
+    "best_profit_factor": 1.2,
+    "strategy": {
+      "name": "Example Supplied Strategy",
+      "version": "v1",
+      "source": "supplied_pine",
+      "fixture_only": false
+    },
+    "market": {
+      "exchange": "OKX",
+      "symbol": "BTCUSDT",
+      "timeframe": "5m",
+      "test_days": 30
+    },
+    "changed_variable": "supplied parameter set B"
+  },
+  "next_action": "robustness-retest",
+  "required_user_artifact": "The same supplied strategy/version/parameter set plus either another date range or a Strategy Tester trade export.",
+  "browser_step": "Run the best supplied version on another date range, or export its trade list for robustness review.",
+  "acceptance_checkpoints": [
+    "strategy handoff is supplied and executable",
+    "TradingView chart symbol, exchange, timeframe, and date range are recorded",
+    "Strategy Tester metrics or export are captured",
+    "run record is normalized, scored, compared, and rendered into a review"
+  ],
+  "guardrails": [
+    "Do not invent or modify trading rules inside this backtest skill.",
+    "Do not tune bundled smoke-test fixtures toward the target.",
+    "Do not claim target success until annualized return, drawdown, trade count, profit factor, costs, and evidence quality are checked.",
+    "Use browser recovery only for layout/report issues, not for subscription bypass or credential capture."
+  ],
+  "comparison_summary": {
+    "decision": "example-param-b is the strongest run and reaches the target with basic checks satisfied.",
+    "next_allowed_step": "Retest the best supplied version on another date range or export trades for robustness review.",
+    "pass_count": 1,
+    "watch_count": 0,
+    "comparable_count": 2,
+    "errors": []
+  }
+}

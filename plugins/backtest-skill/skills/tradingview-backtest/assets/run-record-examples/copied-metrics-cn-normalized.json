@@ -1,0 +1,40 @@
+{
+  "run_record": {
+    "run_id": "example-cn-metrics-v1",
+    "target": {
+      "metric": "annualized_return",
+      "threshold": "20%"
+    },
+    "strategy": {
+      "name": "Example Supplied Strategy",
+      "version": "v1",
+      "source": "supplied_pine",
+      "script_is_strategy": true,
+      "fixture_only": false
+    },
+    "market": {
+      "symbol": "BTCUSDT",
+      "exchange": "OKX",
+      "timeframe": "5m",
+      "test_days": 23
+    },
+    "properties": {},
+    "inputs": {},
+    "metrics": {
+      "net_profit": "-2,496.21 USDT -24.96%",
+      "net_return": "-24.96%",
+      "max_drawdown": "25.84%",
+      "total_trades": "128",
+      "win_rate": "16.41%",
+      "profit_factor": "0.292",
+      "average_trade": "-19.92 USDT -0.24%",
+      "sharpe": "-0.769"
+    },
+    "evidence": {
+      "copied_tables": [
+        "fields"
+      ]
+    },
+    "analysis": {}
+  }
+}
