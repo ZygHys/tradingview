@@ -39,6 +39,8 @@ TradingView is strong as a strategy expression, chart review, and signal alert l
 tradingview/
 |-- .codebuddy-plugin/
 |   `-- marketplace.json
+|-- .github/
+|   `-- workflows/validate.yml
 |-- .agents/
 |   `-- plugins/
 |       `-- marketplace.json
@@ -93,6 +95,8 @@ Use the Claude Code plugin marketplace flow for this repository and install `bac
 ## Validation
 
 Run the repository validator before publishing. It checks marketplace manifests, plugin manifests, paths, versions, required files, and generated example artifacts.
+
+GitHub Actions runs the same validator on pushes and pull requests so public marketplace changes stay installable.
 
 ```bash
 node plugins/backtest-skill/scripts/validate.js

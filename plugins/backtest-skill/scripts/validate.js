@@ -217,6 +217,7 @@ assert(
 
 for (const file of [
   ".gitattributes",
+  ".github/workflows/validate.yml",
   "README.md",
   "AGENTS.md",
   "plugins/backtest-skill/README.md",
@@ -285,6 +286,9 @@ for (const file of [
 }
 
 assertContains("plugins/backtest-skill/commands/backtest.md", "blank-layout-ready");
+assertContains(".github/workflows/validate.yml", "node plugins/backtest-skill/scripts/validate.js");
+assertContains(".github/workflows/validate.yml", "working-directory: plugins/backtest-skill");
+assertContains(".github/workflows/validate.yml", "node scripts/validate.js");
 assertContains("plugins/backtest-skill/commands/backtest.md", "strategy handoff package");
 assertContains("plugins/backtest-skill/commands/backtest.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/commands/backtest.md", "Pine Editor");
@@ -303,6 +307,7 @@ assertContains("README.md", "fixture-rejected states");
 assertContains("README.md", "fill-in run-package templates");
 assertContains("README.md", "Stabilize the TradingView operating loop first");
 assertContains("README.md", "Only after the operating loop is stable");
+assertContains("README.md", "GitHub Actions runs the same validator");
 assertContains("plugins/backtest-skill/README.md", "`strategy()` consumes an indicator slot");
 assertContains("plugins/backtest-skill/README.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/README.md", "Pine Editor");

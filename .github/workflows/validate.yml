@@ -1,0 +1,24 @@
+name: Validate TradingView marketplace
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate repository marketplace and backtest skill
+        run: node plugins/backtest-skill/scripts/validate.js
+
+      - name: Validate backtest-skill plugin root
+        working-directory: plugins/backtest-skill
+        run: node scripts/validate.js
