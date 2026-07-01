@@ -9,6 +9,8 @@ function usage() {
     "Usage:",
     "  node scripts/create-browser-run-package.js <handoff.json>",
     "  node scripts/create-browser-run-package.js <handoff.json> --format markdown",
+    "  node scripts/create-browser-run-package.js <handoff.json> --output browser-run-package.json",
+    "  node scripts/create-browser-run-package.js <handoff.json> --format markdown --output browser-runbook.md",
     "  node scripts/create-browser-run-package.js -  # read JSON from stdin",
   ].join("\n");
 }
@@ -21,10 +23,18 @@ function parseArgs(argv) {
   }
   const target = args[0];
   let format = "json";
+  let output = "";
+  let outputWasProvided = false;
   for (let index = 1; index < args.length; index += 1) {
     const item = args[index];
     if (item === "--format") {
       format = args[index + 1] || "";
+      index += 1;
+      continue;
+    }
+    if (item === "--output") {
+      outputWasProvided = true;
+      output = args[index + 1] || "";
       index += 1;
       continue;
     }
@@ -33,7 +43,10 @@ function parseArgs(argv) {
   if (!["json", "markdown"].includes(format)) {
     throw new Error("--format must be json or markdown");
   }
-  return { target, format };
+  if (outputWasProvided && (!output || output === "--format" || output === "--output")) {
+    throw new Error("--output requires a file path");
+  }
+  return { target, format, output };
 }
 
 function readInput(target) {
@@ -49,6 +62,16 @@ function parseJson(input) {
   } catch (error) {
     return { ok: false, errors: [`Invalid JSON: ${error.message}`] };
   }
+}
+
+function writeOutput(output, content) {
+  if (!output) {
+    process.stdout.write(content);
+    return;
+  }
+  const outputPath = path.resolve(output);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, content);
 }
 
 function createBrowserRunPackage(raw, options = {}) {
@@ -92,7 +115,7 @@ function main() {
     process.exit(2);
   }
 
-  const { target, format } = parsedArgs;
+  const { target, format, output } = parsedArgs;
   const input = readInput(target);
   const parsed = parseJson(input);
   if (parsed && parsed.ok === false && parsed.errors) {
@@ -104,9 +127,9 @@ function main() {
   const browserRunPackage = createBrowserRunPackage(parsed, { baseDir });
 
   if (format === "markdown") {
-    process.stdout.write(browserRunPackage.runbook_markdown);
+    writeOutput(output, browserRunPackage.runbook_markdown);
   } else {
-    console.log(JSON.stringify(browserRunPackage, null, 2));
+    writeOutput(output, `${JSON.stringify(browserRunPackage, null, 2)}\n`);
   }
 
   process.exit(browserRunPackage.ok ? 0 : 1);

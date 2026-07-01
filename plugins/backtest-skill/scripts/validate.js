@@ -264,6 +264,8 @@ for (const file of [
   "plugins/backtest-skill/skills/tradingview-backtest/assets/handoff-examples/indicator-only-invalid.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-session-examples/pine-strategy-session.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/pine-strategy-runbook.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/browser-run-package-examples/pine-strategy-browser-run-package.json",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/browser-run-package-examples/pine-strategy-browser-run-package.md",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-input.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-run.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-input.json",
@@ -355,6 +357,9 @@ assertContains("plugins/backtest-skill/README.md", "create-blocked-run.js");
 assertContains("plugins/backtest-skill/README.md", "pine-strategy-handoff.json");
 assertContains("plugins/backtest-skill/README.md", "pine-strategy-session.json");
 assertContains("plugins/backtest-skill/README.md", "pine-strategy-runbook.md");
+assertContains("plugins/backtest-skill/README.md", "browser-run-package-examples");
+assertContains("plugins/backtest-skill/README.md", "pine-strategy-browser-run-package.json");
+assertContains("plugins/backtest-skill/README.md", "pine-strategy-browser-run-package.md");
 assertContains("plugins/backtest-skill/README.md", "blocked-report-render-input.json");
 assertContains("plugins/backtest-skill/README.md", "fixture-visible-no-real-handoff-input.json");
 assertContains("plugins/backtest-skill/README.md", "copied-metrics-cn-input.json");
@@ -392,6 +397,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/st
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "indicator-only-invalid.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "Create A Browser Run Package");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "create-browser-run-package.js");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "--output <path>");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "pine-strategy-browser-run-package.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "pine-strategy-session.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.md");
@@ -406,6 +413,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/en
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "pine-strategy-handoff-template.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "browser-metrics-template.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "create-browser-run-package.js");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "--output <path>");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "pine-strategy-browser-run-package.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "complete-run-record.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "render-review.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "render-next-run-request.js");
@@ -415,6 +424,7 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/creat
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/render-runbook.js", "TradingView Browser Runbook");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js", "tradingview_browser_run_package");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js", "ready_for_logged_in_browser");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-browser-run-package.js", "--output");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "create-run-session.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "end-to-end-browser-run.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "render-runbook.js");
@@ -547,6 +557,7 @@ try {
 }
 
 const expectedRunbook = fs.readFileSync(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/pine-strategy-runbook.md"), "utf8");
+const expectedBrowserRunPackageMarkdown = fs.readFileSync(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/assets/browser-run-package-examples/pine-strategy-browser-run-package.md"), "utf8");
 const browserRunPackage = createBrowserRunPackage(pineHandoff, { baseDir: handoffBaseDir });
 assert(browserRunPackage.ok, "Pine strategy browser run package must be ready");
 assert(browserRunPackage.package_type === "tradingview_browser_run_package", "Browser run package type mismatch");
@@ -559,6 +570,22 @@ assert(
   normalizeLineEndings(browserRunPackage.runbook_markdown) === normalizeLineEndings(expectedRunbook),
   "Browser run package Markdown must match render-runbook.js"
 );
+assert(
+  normalizeLineEndings(browserRunPackage.runbook_markdown) === normalizeLineEndings(expectedBrowserRunPackageMarkdown),
+  "Browser run package Markdown example must match create-browser-run-package.js"
+);
+
+const browserRunPackageActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/browser-run-package-examples/.pine-strategy-browser-run-package-generated.json");
+fs.writeFileSync(path.join(root, browserRunPackageActualPath), JSON.stringify(browserRunPackage, null, 2) + "\n");
+try {
+  assertJsonDeepEqual(
+    browserRunPackageActualPath,
+    "plugins/backtest-skill/skills/tradingview-backtest/assets/browser-run-package-examples/pine-strategy-browser-run-package.json",
+    "Pine strategy browser run package example must match create-browser-run-package.js"
+  );
+} finally {
+  unlinkIfExists(browserRunPackageActualPath);
+}
 
 const indicatorOnlyBrowserRunPackage = createBrowserRunPackage(indicatorOnlyHandoff, { baseDir: handoffBaseDir });
 assert(!indicatorOnlyBrowserRunPackage.ok, "Indicator-only browser run package must be blocked");

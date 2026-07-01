@@ -24,7 +24,7 @@ TradingView is strong as a strategy expression, chart review, and signal alert l
 6. Only after the operating loop is stable, compare runs and iterate user-provided strategy versions or input parameters toward an explicit target such as annualized return >= 20%, without inventing new trading logic.
 7. Accept a strategy handoff package from users or future strategy-construction plugins before browser execution.
 8. Provide fill-in run-package templates for real strategy handoffs and browser-captured Strategy Tester metrics.
-9. Turn an executable handoff into a browser run package and checklist before touching TradingView.
+9. Turn an executable handoff into a browser run package and checklist before touching TradingView, with generated example packages that show exactly what the browser operator receives.
 10. Render Markdown browser/manual runbooks from handoffs, run sessions, or browser run packages so execution can be delegated without losing required evidence.
 11. Complete browser-captured Strategy Tester metrics into scored run records from run-session seeds.
 12. Render portable Markdown review reports from Strategy Tester run records and supplied run sets.
@@ -121,6 +121,8 @@ The `tradingview-backtest` skill helps an AI agent answer requests such as:
 - "Generate alert and webhook JSON for this strategy."
 
 The skill is deliberately workflow-first. It can use browser automation when the host provides browser tools, but it always keeps a manual fallback path because TradingView UI, account state, and subscriptions vary. It does not build strategies from indicators, public accounts, or vague trading ideas; those belong in separate future plugins.
+
+The baseline objective is stable TradingView design, test, evidence, analysis, and iteration. Annualized return targets such as 20% are evaluated only after that loop is repeatable and a real supplied strategy or supplied parameter set exists.
 
 ## Public Repository Policy
 

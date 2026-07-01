@@ -51,6 +51,7 @@ The plugin solves these recurring gaps:
 | `skills/tradingview-backtest/assets/handoff-examples/` | Sanitized handoff packages for pre-browser validation |
 | `skills/tradingview-backtest/assets/run-session-examples/` | Sanitized browser run-session examples |
 | `skills/tradingview-backtest/assets/runbook-examples/` | Sanitized Markdown browser/manual runbooks generated from run sessions |
+| `skills/tradingview-backtest/assets/browser-run-package-examples/` | Sanitized complete browser run packages generated from strategy handoffs |
 | `skills/tradingview-backtest/assets/run-record-examples/` | Sanitized JSON examples for blocked, copied, browser-completed, and iteration states |
 | `skills/tradingview-backtest/assets/review-examples/` | Sanitized Markdown review examples generated from run records |
 | `skills/tradingview-backtest/assets/next-run-request-examples/` | Sanitized next-run request examples for pass, blocked, and fixture-rejected states |
@@ -72,6 +73,8 @@ The plugin solves these recurring gaps:
 - `assets/run-session-examples/pine-strategy-session.json` shows the pre-browser checkpoints, browser steps, required evidence, and run-record seed.
 - A run session or executable handoff can be rendered into a Markdown browser/manual runbook with `skills/tradingview-backtest/scripts/render-runbook.js`.
 - A handoff can be converted into a complete browser run package with `skills/tradingview-backtest/scripts/create-browser-run-package.js`; use `--format markdown` when handing the runbook directly to a browser operator.
+- `assets/browser-run-package-examples/pine-strategy-browser-run-package.json` shows the full JSON package a logged-in browser operator receives before opening TradingView.
+- `assets/browser-run-package-examples/pine-strategy-browser-run-package.md` shows the generated Markdown runbook from that same package.
 - `assets/runbook-examples/pine-strategy-runbook.md` shows the browser checklist, evidence checklist, stop conditions, and run-record seed for a Pine strategy run.
 - Copied or transcribed Strategy Tester metrics can be normalized with `skills/tradingview-backtest/scripts/normalize-run-record.js`.
 - `assets/run-record-examples/copied-metrics-cn-input.json` shows Chinese TradingView summary labels normalized into a run record.

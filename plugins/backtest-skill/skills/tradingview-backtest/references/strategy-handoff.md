@@ -82,6 +82,8 @@ Use `--format markdown` when a browser operator needs a direct runbook:
 node scripts/create-browser-run-package.js handoff.json --format markdown
 ```
 
+Use `--output <path>` to persist either format with the run artifacts. See `assets/browser-run-package-examples/pine-strategy-browser-run-package.json` and `assets/browser-run-package-examples/pine-strategy-browser-run-package.md` for generated examples.
+
 The package combines validation, run-session seed, objective order, guardrails, and a Markdown runbook. If validation fails, it blocks before opening TradingView.
 
 Use lower-level scripts only when a specific intermediate artifact is needed:
