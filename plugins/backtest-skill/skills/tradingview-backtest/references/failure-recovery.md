@@ -62,6 +62,6 @@ node scripts/create-blocked-run.js blocked-input.json
 
 See `assets/run-record-examples/blocked-report-render-input.json` and `assets/run-record-examples/blocked-report-render-run.json` for a sanitized `blocked_at_report_render` example.
 
-See `assets/run-record-examples/fixture-visible-no-real-handoff-input.json` and `assets/run-record-examples/fixture-visible-no-real-handoff-run.json` for a sanitized example where the browser is usable but the only strategy available is the smoke fixture. This state proves the operating surface can be inspected; it does not permit 20% target-return iteration.
+See `assets/run-record-examples/fixture-visible-no-real-handoff-input.json` and `assets/run-record-examples/fixture-visible-no-real-handoff-run.json` for a sanitized example where the browser is usable but the only strategy available is the smoke fixture. Convert that run to `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json` and `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.md` before handing back to the user. This state proves the operating surface can be inspected; it does not permit 20% target-return iteration.
 
 The input should include `blocking_condition`, missing checkpoints or fields, what was attempted, observed evidence, and the smallest resume action. The generator does not diagnose the browser or create strategy logic; it only turns a known blocked state into a resumable run record.

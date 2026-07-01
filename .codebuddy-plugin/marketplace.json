@@ -4,13 +4,13 @@
     "name": "ZygHys"
   },
   "description": "Unofficial TradingView AI workflow plugin marketplace.",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "plugins": [
     {
       "name": "backtest-skill",
       "source": "./plugins/backtest-skill",
       "description": "TradingView usage skill for running supplied strategies in Strategy Tester, browser operation, result collection, and review.",
-      "version": "0.2.34"
+      "version": "0.2.35"
     }
   ]
 }

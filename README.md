@@ -28,7 +28,7 @@ TradingView is strong as a strategy expression, chart review, and signal alert l
 10. Render Markdown browser/manual runbooks from handoffs or run sessions so execution can be delegated without losing required evidence.
 11. Complete browser-captured Strategy Tester metrics into scored run records from run-session seeds.
 12. Render portable Markdown review reports from Strategy Tester run records and supplied run sets.
-13. Emit structured next-run requests so browser or manual execution can continue from pass, watch, iterate, blocked, or fixture-rejected states.
+13. Emit structured next-run requests so browser or manual execution can continue from pass, watch, iterate, blocked states, fixture-rejected states, or fixture-visible/no-real-handoff states.
 14. Render Markdown next-run handoff requests for users or browser operators.
 15. Produce blocked-run records when TradingView account, layout, plan, browser, or report-rendering state prevents auditable metrics.
 16. Produce alert and webhook payload templates when the already-tested strategy is ready for forward testing.

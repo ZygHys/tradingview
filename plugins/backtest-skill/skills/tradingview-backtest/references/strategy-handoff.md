@@ -92,7 +92,7 @@ If the package is incomplete, produce a blocked-run record that names the missin
 
 If the logged-in browser already has the bundled smoke fixture on the chart but no real handoff package exists, treat that as `fixture_visible_no_real_handoff`. Produce a blocked-run record and request a real Pine `strategy()`, saved TradingView strategy name, Strategy Tester artifact, or supplied parameter/version set.
 
-If the only completed run is a bundled smoke fixture, run `node scripts/create-next-run-request.js <fixture-run-record.json>` and return the generated handoff request. Render it with `node scripts/render-next-run-request.js <next-run-request.json>` when the handoff must be readable by a user or browser operator. Do not continue parameter optimization on the fixture. See `assets/next-run-request-examples/fixture-rejected-next-run-request.json` and `assets/next-run-request-examples/fixture-rejected-next-run-request.md`.
+If the only completed run is a bundled smoke fixture, run `node scripts/create-next-run-request.js <fixture-run-record.json>` and return the generated handoff request. Render it with `node scripts/render-next-run-request.js <next-run-request.json>` when the handoff must be readable by a user or browser operator. Do not continue parameter optimization on the fixture. See `assets/next-run-request-examples/fixture-rejected-next-run-request.json`, `assets/next-run-request-examples/fixture-rejected-next-run-request.md`, `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json`, and `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.md`.
 
 ## Handoff To Iteration
 

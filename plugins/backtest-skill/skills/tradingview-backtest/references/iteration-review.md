@@ -55,7 +55,7 @@ To convert the comparison into the next machine-readable browser/manual action, 
 node scripts/create-next-run-request.js runs.json
 ```
 
-The output states whether the next action is a robustness retest, trade export, lower-risk supplied variant, missing-evidence recovery, a request for the next supplied version, or a real-strategy handoff request after a fixture is rejected. See `assets/next-run-request-examples/target-iteration-next-run-request.json`, `assets/next-run-request-examples/blocked-report-render-next-run-request.json`, and `assets/next-run-request-examples/fixture-rejected-next-run-request.json`.
+The output states whether the next action is a robustness retest, trade export, lower-risk supplied variant, missing-evidence recovery, a request for the next supplied version, or a real-strategy handoff request after a fixture is rejected or only a fixture is visible. See `assets/next-run-request-examples/target-iteration-next-run-request.json`, `assets/next-run-request-examples/blocked-report-render-next-run-request.json`, `assets/next-run-request-examples/fixture-rejected-next-run-request.json`, and `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json`.
 
 To render a next-run request for a user or browser operator, use:
 
@@ -63,7 +63,7 @@ To render a next-run request for a user or browser operator, use:
 node scripts/render-next-run-request.js next-run-request-or-run-record.json
 ```
 
-The renderer accepts either a next-run request JSON or a run record/run set that can be converted by `create-next-run-request.js`. See `assets/next-run-request-examples/fixture-rejected-next-run-request.md`.
+The renderer accepts either a next-run request JSON or a run record/run set that can be converted by `create-next-run-request.js`. See `assets/next-run-request-examples/fixture-rejected-next-run-request.md` and `assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.md`.
 
 ## Target Gate
 

@@ -277,6 +277,8 @@ for (const file of [
   "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/blocked-report-render-next-run-request.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-rejected-next-run-request.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-rejected-next-run-request.md",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.md",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-package-templates/pine-strategy-handoff-template.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-package-templates/browser-metrics-template.json",
 ]) {
@@ -318,6 +320,7 @@ assertContains("README.md", "Markdown review reports");
 assertContains("README.md", "structured next-run requests");
 assertContains("README.md", "Markdown next-run handoff requests");
 assertContains("README.md", "fixture-rejected states");
+assertContains("README.md", "fixture-visible/no-real-handoff states");
 assertContains("README.md", "fill-in run-package templates");
 assertContains("README.md", "Stabilize the TradingView operating loop first");
 assertContains("README.md", "Only after the operating loop is stable");
@@ -355,6 +358,8 @@ assertContains("plugins/backtest-skill/README.md", "target-iteration-next-run-re
 assertContains("plugins/backtest-skill/README.md", "blocked-report-render-next-run-request.json");
 assertContains("plugins/backtest-skill/README.md", "fixture-rejected-next-run-request.json");
 assertContains("plugins/backtest-skill/README.md", "fixture-rejected-next-run-request.md");
+assertContains("plugins/backtest-skill/README.md", "fixture-visible-no-real-handoff-next-run-request.json");
+assertContains("plugins/backtest-skill/README.md", "fixture-visible-no-real-handoff-next-run-request.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "plan-limits-and-layouts.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "strategy-handoff.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md", "end-to-end-browser-run.md");
@@ -381,6 +386,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/st
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "pine-strategy-session.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-rejected-next-run-request.md");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-visible-no-real-handoff-next-run-request.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture-visible-no-real-handoff-next-run-request.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "Definition Of Done");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "Objective Ladder");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/end-to-end-browser-run.md", "The baseline success condition is a stable TV operation and analysis loop");
@@ -413,6 +420,8 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/fa
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "blocked-report-render-run.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture_visible_no_real_handoff");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture-visible-no-real-handoff-run.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture-visible-no-real-handoff-next-run-request.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture-visible-no-real-handoff-next-run-request.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture_visible_no_real_handoff");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "metrics-captured");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "Chart order markers");
@@ -449,8 +458,10 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/it
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "target-iteration-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "blocked-report-render-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "fixture-rejected-next-run-request.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "fixture-visible-no-real-handoff-next-run-request.json");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "render-next-run-request.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "fixture-rejected-next-run-request.md");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/iteration-review.md", "fixture-visible-no-real-handoff-next-run-request.md");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/compare-runs.js", "scoreRun(record)");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/render-review.js", "TradingView Backtest Review");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/scripts/create-next-run-request.js", "next_tradingview_run_request");
@@ -616,6 +627,33 @@ try {
   );
 } finally {
   unlinkIfExists(blockedNextRunActualPath);
+}
+
+const fixtureVisibleNoHandoffRunRecord = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-run.json");
+const fixtureVisibleNoHandoffNextRunActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-visible-no-real-handoff-next-run-request-generated.json");
+fs.writeFileSync(path.join(root, fixtureVisibleNoHandoffNextRunActualPath), JSON.stringify(createNextRunRequest(fixtureVisibleNoHandoffRunRecord), null, 2) + "\n");
+try {
+  assertJsonDeepEqual(
+    fixtureVisibleNoHandoffNextRunActualPath,
+    "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json",
+    "Fixture-visible no-real-handoff next-run request must match create-next-run-request.js"
+  );
+} finally {
+  unlinkIfExists(fixtureVisibleNoHandoffNextRunActualPath);
+}
+
+const fixtureVisibleNoHandoffNextRunRequest = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.json");
+const fixtureVisibleNoHandoffNextRunMarkdownActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-visible-no-real-handoff-next-run-request-generated.md");
+fs.writeFileSync(path.join(root, fixtureVisibleNoHandoffNextRunMarkdownActualPath), renderNextRunRequest(fixtureVisibleNoHandoffNextRunRequest));
+try {
+  const actual = fs.readFileSync(path.join(root, fixtureVisibleNoHandoffNextRunMarkdownActualPath), "utf8");
+  const expected = fs.readFileSync(path.join(root, "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-visible-no-real-handoff-next-run-request.md"), "utf8");
+  assert(
+    normalizeLineEndings(actual) === normalizeLineEndings(expected),
+    "Fixture-visible no-real-handoff Markdown next-run request must match render-next-run-request.js"
+  );
+} finally {
+  unlinkIfExists(fixtureVisibleNoHandoffNextRunMarkdownActualPath);
 }
 
 const fixtureRejectedRunRecord = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/browser-report-cn-completed.json");
