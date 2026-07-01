@@ -86,6 +86,7 @@ The plugin solves these recurring gaps:
 - `assets/next-run-request-examples/fixture-rejected-next-run-request.md` shows a human-readable handoff request generated from the fixture-rejected JSON request.
 - Blocked browser or handoff states can be recorded with `skills/tradingview-backtest/scripts/create-blocked-run.js`.
 - `assets/run-record-examples/blocked-report-render-input.json` shows how to record a Strategy Tester panel that stays blank even though strategy order markers are visible.
+- `assets/run-record-examples/fixture-visible-no-real-handoff-input.json` shows how to stop when the logged-in chart only contains the bundled smoke fixture and no real strategy handoff exists.
 - The skill must stop at account, layout, plan, or metric blockers and produce a blocked-run record instead of inventing results.
 - Handoff examples and bundled fixtures reference files inside this plugin only, so cached plugin installs do not require repository-external paths.
 

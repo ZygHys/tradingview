@@ -1,6 +1,6 @@
 {
   "name": "backtest-skill",
-  "version": "0.2.33",
+  "version": "0.2.34",
   "description": "TradingView usage skill for running supplied strategies in Strategy Tester, browser operation, result collection, and review.",
   "author": {
     "name": "ZygHys",

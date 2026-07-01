@@ -32,6 +32,7 @@ Choose the smallest recovery path:
 | Metrics are not visible or Strategy Report times out | Ask for `metrics-captured` screenshot, copied table, or export. |
 | Strategy Report spinner persists after a strategy is visible | If the layout is saved and reload is acceptable for the current handoff, reload the same chart once, verify the strategy remains visible, reopen the report, then inspect summary and trade-list tabs. |
 | Strategy Tester content is blank after strategy and chart order markers are visible | Record `blocked_at_report_render`, capture screenshot evidence, and do not treat chart order markers as Strategy Tester evidence. Ask for `metrics-captured`, a Strategy Tester export, or explicit approval for one saved-layout reload. |
+| The logged-in chart contains only the bundled smoke fixture and no real handoff exists | Record `fixture_visible_no_real_handoff`; do not continue return iteration. Ask for a real Pine `strategy()`, saved TradingView strategy, tester artifact, or supplied parameter/version set. |
 | Basic historical-bars or data-depth upsell appears while metrics are unavailable | Record the plan/data-depth limitation and dismiss only if it blocks the report. Do not start a trial, change subscription, or infer metrics from the chart. |
 | Supplied artifact is an indicator | Stop; this skill requires an existing strategy. |
 | Further improvement needs new rules | Stop; route to a strategy-construction skill. |
@@ -60,5 +61,7 @@ node scripts/create-blocked-run.js blocked-input.json
 ```
 
 See `assets/run-record-examples/blocked-report-render-input.json` and `assets/run-record-examples/blocked-report-render-run.json` for a sanitized `blocked_at_report_render` example.
+
+See `assets/run-record-examples/fixture-visible-no-real-handoff-input.json` and `assets/run-record-examples/fixture-visible-no-real-handoff-run.json` for a sanitized example where the browser is usable but the only strategy available is the smoke fixture. This state proves the operating surface can be inspected; it does not permit 20% target-return iteration.
 
 The input should include `blocking_condition`, missing checkpoints or fields, what was attempted, observed evidence, and the smallest resume action. The generator does not diagnose the browser or create strategy logic; it only turns a known blocked state into a resumable run record.

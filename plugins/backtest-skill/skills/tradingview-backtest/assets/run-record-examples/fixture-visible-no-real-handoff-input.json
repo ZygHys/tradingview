@@ -1,0 +1,50 @@
+{
+  "run_id": "example-fixture-visible-no-real-handoff-v1",
+  "timestamp": "2026-07-01T07:45:00Z",
+  "operator": "agent",
+  "target": {
+    "metric": "annualized_return",
+    "threshold": "20%",
+    "continuation_gate": "supplied_strategy_or_supplied_parameter_set"
+  },
+  "strategy": {
+    "name": "TV Backtest Skill Fixture EMA Cross v1",
+    "version": "smoke-v1",
+    "source": "pine_fixture",
+    "script_is_strategy": true,
+    "fixture_only": true
+  },
+  "market": {
+    "symbol": "BTCUSDT",
+    "exchange": "OKX",
+    "timeframe": "5m",
+    "chart_type": "candles",
+    "session": "user-mediated TradingView browser session"
+  },
+  "browser_notes": [
+    "The current TradingView chart contains the bundled smoke fixture strategy.",
+    "No non-fixture Pine strategy handoff, saved strategy name, Strategy Tester artifact, or supplied parameter/version set is available.",
+    "The browser workflow may be usable, but the current chart state is not a valid target-return iteration candidate."
+  ],
+  "setup_validity": "incomplete: only smoke fixture is available",
+  "blocking_condition": "fixture_visible_no_real_handoff",
+  "missing_checkpoints": [
+    "real-supplied-strategy-handoff",
+    "Strategy Tester metrics for a non-fixture strategy",
+    "supplied parameter or version set"
+  ],
+  "what_was_attempted": [
+    "Checked the current logged-in TradingView chart state.",
+    "Checked local marketplace assets for executable non-fixture Pine handoff packages.",
+    "Confirmed the visible chart strategy is the bundled smoke fixture."
+  ],
+  "smallest_resume_action": "Provide a real Pine strategy(), accessible saved TradingView strategy name, Strategy Tester artifact, or supplied parameter/version set.",
+  "not_attempted": [
+    "credential capture",
+    "subscription or trial activation",
+    "broker automation",
+    "converting Freqtrade Python strategies to Pine inside this backtest skill",
+    "inventing new strategy logic",
+    "optimizing the smoke fixture toward the 20% target"
+  ]
+}

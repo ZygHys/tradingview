@@ -67,6 +67,18 @@ function assertJsonDeepEqual(fileA, fileB, message) {
   assert(JSON.stringify(left) === JSON.stringify(right), message);
 }
 
+function tempArtifactPath(file) {
+  const parsed = path.parse(file);
+  return path.join(parsed.dir, `${parsed.name}.${process.pid}.tmp${parsed.ext}`).replace(/\\/g, "/");
+}
+
+function unlinkIfExists(file) {
+  const full = path.join(root, file);
+  if (fs.existsSync(full)) {
+    fs.unlinkSync(full);
+  }
+}
+
 function normalizeLineEndings(content) {
   return content.replace(/\r\n/g, "\n");
 }
@@ -253,6 +265,8 @@ for (const file of [
   "plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/pine-strategy-runbook.md",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-input.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-run.json",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-input.json",
+  "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-run.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/copied-metrics-cn-input.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/copied-metrics-cn-normalized.json",
   "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/browser-report-cn-input.json",
@@ -332,6 +346,7 @@ assertContains("plugins/backtest-skill/README.md", "pine-strategy-handoff.json")
 assertContains("plugins/backtest-skill/README.md", "pine-strategy-session.json");
 assertContains("plugins/backtest-skill/README.md", "pine-strategy-runbook.md");
 assertContains("plugins/backtest-skill/README.md", "blocked-report-render-input.json");
+assertContains("plugins/backtest-skill/README.md", "fixture-visible-no-real-handoff-input.json");
 assertContains("plugins/backtest-skill/README.md", "copied-metrics-cn-input.json");
 assertContains("plugins/backtest-skill/README.md", "browser-report-cn-completed.json");
 assertContains("plugins/backtest-skill/README.md", "target-iteration-runs.json");
@@ -396,6 +411,9 @@ assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/fa
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "chart order markers as Strategy Tester evidence");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "create-blocked-run.js");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "blocked-report-render-run.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture_visible_no_real_handoff");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/failure-recovery.md", "fixture-visible-no-real-handoff-run.json");
+assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/strategy-handoff.md", "fixture_visible_no_real_handoff");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "metrics-captured");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/browser-operation.md", "Chart order markers");
 assertContains("plugins/backtest-skill/skills/tradingview-backtest/references/plan-limits-and-layouts.md", "Data-Depth Upsells");
@@ -466,7 +484,7 @@ const pineHandoffResult = validateHandoff(pineHandoff, handoffBaseDir);
 assert(pineHandoffResult.ok, "Pine strategy handoff example must validate");
 assert(pineHandoffResult.artifact_type === "pine_strategy", "Pine strategy handoff example artifact type mismatch");
 
-const runSessionActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/run-session-examples/.pine-strategy-session-generated.tmp.json";
+const runSessionActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-session-examples/.pine-strategy-session-generated.json");
 fs.writeFileSync(path.join(root, runSessionActualPath), JSON.stringify(createRunSession(pineHandoff, { baseDir: handoffBaseDir }), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -475,7 +493,7 @@ try {
     "Pine strategy run-session example output must match create-run-session.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, runSessionActualPath));
+  unlinkIfExists(runSessionActualPath);
 }
 
 const indicatorOnlyHandoff = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/handoff-examples/indicator-only-invalid.json");
@@ -490,7 +508,7 @@ const indicatorOnlyRunSession = createRunSession(indicatorOnlyHandoff, { baseDir
 assert(!indicatorOnlyRunSession.ok, "Indicator-only handoff must produce a blocked run session");
 assert(indicatorOnlyRunSession.required_next_checkpoint === "complete-handoff-package", "Blocked run session must request complete handoff");
 
-const runbookActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/.pine-strategy-runbook-generated.tmp.md";
+const runbookActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/runbook-examples/.pine-strategy-runbook-generated.md");
 const runSessionExample = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-session-examples/pine-strategy-session.json");
 fs.writeFileSync(path.join(root, runbookActualPath), renderRunbook(runSessionExample));
 try {
@@ -501,11 +519,11 @@ try {
     "Pine strategy Markdown runbook must match render-runbook.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, runbookActualPath));
+  unlinkIfExists(runbookActualPath);
 }
 
 const blockedExampleInput = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-input.json");
-const blockedExampleActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.blocked-report-render-generated.tmp.json";
+const blockedExampleActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.blocked-report-render-generated.json");
 fs.writeFileSync(path.join(root, blockedExampleActualPath), JSON.stringify(createBlockedRun(blockedExampleInput), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -514,11 +532,24 @@ try {
     "Blocked report-render example output must match create-blocked-run.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, blockedExampleActualPath));
+  unlinkIfExists(blockedExampleActualPath);
+}
+
+const fixtureVisibleNoHandoffInput = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-input.json");
+const fixtureVisibleNoHandoffActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.fixture-visible-no-real-handoff-generated.json");
+fs.writeFileSync(path.join(root, fixtureVisibleNoHandoffActualPath), JSON.stringify(createBlockedRun(fixtureVisibleNoHandoffInput), null, 2) + "\n");
+try {
+  assertJsonDeepEqual(
+    fixtureVisibleNoHandoffActualPath,
+    "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/fixture-visible-no-real-handoff-run.json",
+    "Fixture-visible no-real-handoff example output must match create-blocked-run.js"
+  );
+} finally {
+  unlinkIfExists(fixtureVisibleNoHandoffActualPath);
 }
 
 const copiedMetricsCnInput = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/copied-metrics-cn-input.json");
-const copiedMetricsCnActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.copied-metrics-cn-generated.tmp.json";
+const copiedMetricsCnActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.copied-metrics-cn-generated.json");
 fs.writeFileSync(path.join(root, copiedMetricsCnActualPath), JSON.stringify(normalizeRunRecord(copiedMetricsCnInput), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -527,11 +558,11 @@ try {
     "Chinese copied metrics example output must match normalize-run-record.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, copiedMetricsCnActualPath));
+  unlinkIfExists(copiedMetricsCnActualPath);
 }
 
 const browserReportCnInput = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/browser-report-cn-input.json");
-const browserReportCnActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.browser-report-cn-generated.tmp.json";
+const browserReportCnActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/.browser-report-cn-generated.json");
 fs.writeFileSync(path.join(root, browserReportCnActualPath), JSON.stringify(completeRunRecord(browserReportCnInput), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -540,7 +571,7 @@ try {
     "Browser report metrics example output must match complete-run-record.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, browserReportCnActualPath));
+  unlinkIfExists(browserReportCnActualPath);
 }
 
 const targetIterationRuns = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/target-iteration-runs.json");
@@ -549,7 +580,7 @@ assert(targetIterationComparison.ok, "Target iteration example must be comparabl
 assert(targetIterationComparison.best_run_id === "example-param-b", "Target iteration example best run should be example-param-b");
 assert(targetIterationComparison.pass_count === 1, "Target iteration example should have exactly one pass run");
 
-const targetIterationReviewActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/review-examples/.target-iteration-review-generated.tmp.md";
+const targetIterationReviewActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/review-examples/.target-iteration-review-generated.md");
 fs.writeFileSync(path.join(root, targetIterationReviewActualPath), renderReview(targetIterationRuns));
 try {
   const actual = fs.readFileSync(path.join(root, targetIterationReviewActualPath), "utf8");
@@ -559,10 +590,10 @@ try {
     "Target iteration Markdown review must match render-review.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, targetIterationReviewActualPath));
+  unlinkIfExists(targetIterationReviewActualPath);
 }
 
-const targetNextRunActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.target-iteration-next-run-request-generated.tmp.json";
+const targetNextRunActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.target-iteration-next-run-request-generated.json");
 fs.writeFileSync(path.join(root, targetNextRunActualPath), JSON.stringify(createNextRunRequest(targetIterationRuns), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -571,11 +602,11 @@ try {
     "Target iteration next-run request must match create-next-run-request.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, targetNextRunActualPath));
+  unlinkIfExists(targetNextRunActualPath);
 }
 
 const blockedRunRecord = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/blocked-report-render-run.json");
-const blockedNextRunActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.blocked-report-render-next-run-request-generated.tmp.json";
+const blockedNextRunActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.blocked-report-render-next-run-request-generated.json");
 fs.writeFileSync(path.join(root, blockedNextRunActualPath), JSON.stringify(createNextRunRequest(blockedRunRecord), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -584,11 +615,11 @@ try {
     "Blocked report-render next-run request must match create-next-run-request.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, blockedNextRunActualPath));
+  unlinkIfExists(blockedNextRunActualPath);
 }
 
 const fixtureRejectedRunRecord = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/run-record-examples/browser-report-cn-completed.json");
-const fixtureRejectedNextRunActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-rejected-next-run-request-generated.tmp.json";
+const fixtureRejectedNextRunActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-rejected-next-run-request-generated.json");
 fs.writeFileSync(path.join(root, fixtureRejectedNextRunActualPath), JSON.stringify(createNextRunRequest(fixtureRejectedRunRecord), null, 2) + "\n");
 try {
   assertJsonDeepEqual(
@@ -597,11 +628,11 @@ try {
     "Fixture-rejected next-run request must match create-next-run-request.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, fixtureRejectedNextRunActualPath));
+  unlinkIfExists(fixtureRejectedNextRunActualPath);
 }
 
 const fixtureRejectedNextRunRequest = readJson("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/fixture-rejected-next-run-request.json");
-const fixtureRejectedNextRunMarkdownActualPath = "plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-rejected-next-run-request-generated.tmp.md";
+const fixtureRejectedNextRunMarkdownActualPath = tempArtifactPath("plugins/backtest-skill/skills/tradingview-backtest/assets/next-run-request-examples/.fixture-rejected-next-run-request-generated.md");
 fs.writeFileSync(path.join(root, fixtureRejectedNextRunMarkdownActualPath), renderNextRunRequest(fixtureRejectedNextRunRequest));
 try {
   const actual = fs.readFileSync(path.join(root, fixtureRejectedNextRunMarkdownActualPath), "utf8");
@@ -611,7 +642,7 @@ try {
     "Fixture-rejected Markdown next-run request must match render-next-run-request.js"
   );
 } finally {
-  fs.unlinkSync(path.join(root, fixtureRejectedNextRunMarkdownActualPath));
+  unlinkIfExists(fixtureRejectedNextRunMarkdownActualPath);
 }
 
 console.log("Validation passed");
