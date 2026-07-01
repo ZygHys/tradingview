@@ -21,6 +21,19 @@ function assertFile(file) {
   assert(fs.existsSync(full), `Missing ${file}`);
 }
 
+function assertPngMinDimensions(file, minWidth, minHeight) {
+  const full = path.join(root, file);
+  const buffer = fs.readFileSync(full);
+  const signature = buffer.subarray(0, 8).toString("hex");
+  assert(signature === "89504e470d0a1a0a", `${file} must be a PNG image`);
+  const width = buffer.readUInt32BE(16);
+  const height = buffer.readUInt32BE(20);
+  assert(
+    width >= minWidth && height >= minHeight,
+    `${file} is too tightly cropped: ${width}x${height}, expected at least ${minWidth}x${minHeight}`
+  );
+}
+
 function validateSemver(version, label) {
   assert(/^\d+\.\d+\.\d+$/.test(version), `${label} version must be semver`);
 }
@@ -301,6 +314,14 @@ for (const file of [
   assertFile(file);
 }
 
+assertPngMinDimensions("docs/assets/tradingview-new-account-backtest-start/03-strategy-on-chart.png", 1500, 250);
+assertPngMinDimensions("docs/assets/tradingview-new-account-backtest-start/06-report-detail-section.png", 1500, 900);
+assertPngMinDimensions(
+  "docs/assets/tradingview-new-account-backtest-start/12-report-equity-ups-downs-and-capital-efficiency.png",
+  1500,
+  900
+);
+
 validateSkill("plugins/backtest-skill/skills/tradingview-backtest/SKILL.md");
 validateOpenAiYaml("plugins/backtest-skill/skills/tradingview-backtest/agents/openai.yaml");
 
@@ -373,8 +394,8 @@ assertContains("docs/tradingview-new-account-backtest-start.md", "08-pine-panel-
 assertContains("docs/tradingview-new-account-backtest-start.md", "09-pine-editor-code-closeup.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "01-user-observed-report.png");
 assertContains("docs/tradingview-new-account-backtest-start.md", "TV Backtest Skill Chart Rich Fixture v4");
-assertContains("docs/tradingview-new-account-backtest-start.md", "没有足够的数据显示");
-assertContains("docs/tradingview-new-account-backtest-start.md", "先改策略样本或扩大样本");
+assertContains("docs/tradingview-new-account-backtest-start.md", "某个报告区块没有生成曲线或统计");
+assertContains("docs/tradingview-new-account-backtest-start.md", "先处理策略样本或日期范围");
 assertContains("docs/tradingview-new-account-backtest-start.md", "不要把年化 20% 当作当前阶段目标");
 assertContains("plugins/backtest-skill/README.md", "`strategy()` consumes an indicator slot");
 assertContains("plugins/backtest-skill/README.md", "end-to-end-browser-run.md");
