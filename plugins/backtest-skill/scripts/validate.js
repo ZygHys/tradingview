@@ -303,6 +303,9 @@ for (const file of [
 }
 
 assertContains("plugins/backtest-skill/commands/backtest.md", "blank-layout-ready");
+assertContains(".github/workflows/validate.yml", "actions/checkout@v7.0.0");
+assertContains(".github/workflows/validate.yml", "actions/setup-node@v6.4.0");
+assertContains(".github/workflows/validate.yml", "node-version: \"24\"");
 assertContains(".github/workflows/validate.yml", "node plugins/backtest-skill/scripts/validate.js");
 assertContains(".github/workflows/validate.yml", "working-directory: plugins/backtest-skill");
 assertContains(".github/workflows/validate.yml", "node scripts/validate.js");
